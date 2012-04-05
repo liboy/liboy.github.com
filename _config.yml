@@ -3,9 +3,9 @@
 # ----------------------- #
 
 url: http://liboy.github.com
-title: My Octopress Blog
+title: liboy's Blog
 subtitle: A blogging framework for hackers.
-author: Your Name
+author: liboy
 simple_search: http://google.com/search
 description:
 
@@ -97,3 +97,6 @@ google_analytics_tracking_id:
 
 # Facebook Like
 facebook_like: false
+
+# JiaThis
+jiathis: true
