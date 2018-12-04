@@ -454,12 +454,12 @@ body {
 }
 @media (min-width: 1200px) {
   .container .header-inner {
-    width: 1160px;
+    width: 960px;
   }
 }
 @media (min-width: 1600px) {
   .container .header-inner {
-    width: 73%;
+    width: 53%;
   }
 }
 .main {
@@ -471,12 +471,12 @@ body {
 }
 @media (min-width: 1200px) {
   .container .main-inner {
-    width: 1160px;
+    width: 960px;
   }
 }
 @media (min-width: 1600px) {
   .container .main-inner {
-    width: 73%;
+    width: 53%;
   }
 }
 .footer {
@@ -493,12 +493,12 @@ body {
 }
 @media (min-width: 1200px) {
   .container .footer-inner {
-    width: 1160px;
+    width: 960px;
   }
 }
 @media (min-width: 1600px) {
   .container .footer-inner {
-    width: 73%;
+    width: 53%;
   }
 }
 pre,
@@ -1078,7 +1078,7 @@ pre .javascript .function {
   right: 30px;
   z-index: 1050;
   padding: 0 6px;
-  width: 24px;
+  width: initial;
   background: #222;
   font-size: 12px;
   opacity: 0.6;
@@ -1850,7 +1850,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #a3e078;
+  background: #95210f;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2527,12 +2527,12 @@ ul.breadcrumb li+li:last-child {
 }
 @media (min-width: 1200px) {
   .header {
-    width: 1160px;
+    width: 960px;
   }
 }
 @media (min-width: 1600px) {
   .header {
-    width: 73%;
+    width: 53%;
   }
 }
 @media (min-width: 768px) and (max-width: 991px) {
@@ -2606,7 +2606,7 @@ ul.breadcrumb li+li:last-child {
   float: right;
   box-sizing: border-box;
   padding: 40px;
-  width: calc(100% - 270px);
+  width: calc(100% - 260px);
   background: #fff;
   min-height: 700px;
   box-shadow: initial;
@@ -2845,11 +2845,10 @@ ul.breadcrumb li+li:last-child {
   background: #fff;
   box-shadow: initial;
   border-radius: initial;
-  opacity: 0;
 }
 .sidebar-inner.affix {
   position: fixed;
-  top: 30px;
+  top: 20px;
 }
 .sidebar-inner.affix-bottom {
   position: absolute;
@@ -2985,4 +2984,11 @@ ul.breadcrumb li+li:last-child {
   .post-body {
     text-align: justify;
   }
+}
+.post {
+  margin-top: 60px;
+  margin-bottom: 60px;
+  padding: 25px;
+  -webkit-box-shadow: 0 0 5px rgba(202,203,203,0.5);
+  -moz-box-shadow: 0 0 5px rgba(202,203,204,0.5);
 }
