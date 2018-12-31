@@ -1146,7 +1146,7 @@ pre .javascript .function {
   line-height: 36px;
   font-size: 20px;
   font-weight: normal;
-  font-family: 'Lato', "PingFang SC", "Microsoft YaHei", sans-serif;
+  font-family: 'TypoUpright', 'Lato', "PingFang SC", "Microsoft YaHei", sans-serif;
 }
 .site-subtitle {
   margin-top: 10px;
@@ -1850,7 +1850,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #95210f;
+  background: #00b1ab;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2991,4 +2991,8 @@ ul.breadcrumb li+li:last-child {
   padding: 25px;
   -webkit-box-shadow: 0 0 5px rgba(202,203,203,0.5);
   -moz-box-shadow: 0 0 5px rgba(202,203,204,0.5);
+}
+@font-face {
+  font-family: TypoUpright;
+  src: url("/fonts/typo-upright-webfont.ttf");
 }
