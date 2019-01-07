@@ -683,7 +683,7 @@
 <p>然后打开 <code>/themes/next/languages/zh-Hans.yml</code> ,将 <code>visitors</code> 汉化为热度就可以了：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">post:</span><br><span class="line">  created: 创建于</span><br><span class="line">  modified: 更新于</span><br><span class="line">  sticky: 置顶</span><br><span class="line">  posted: 发表于</span><br><span class="line">  <span class="keyword">in</span>: 分类于</span><br><span class="line">  read_more: 阅读全文</span><br><span class="line">  untitled: 未命名</span><br><span class="line">  toc_empty: 此文章未包含目录</span><br><span class="line">  visitors: 热度</span><br><span class="line">  wordcount: 字数统计</span><br><span class="line">  min2read: 阅读时长</span><br><span class="line">  totalcount: 博客全站字数</span><br></pre></td></tr></table></figure>
 <h3 id="29-添加-README-md-文件"><a href="#29-添加-README-md-文件" class="headerlink" title="29. 添加 README.md 文件"></a>29. 添加 README.md 文件</h3><p>每个项目下一般都有一个 <code>README.md</code> 文件，但是使用 <code>hexo</code> 部署到仓库后，项目下是没有 README.md 文件的。</p>
-<p>在 <code>Hexo</code> 目录下的 <code>source</code> 根目录下添加一个 <code>README.m</code>d 文件，修改站点配置文件 <code>_config.yml</code> ，将 <code>skip_render</code> 参数的值设置为：<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">skip_render</span>: <span class="selector-tag">README</span><span class="selector-class">.md</span></span><br></pre></td></tr></table></figure></p>
+<p>在 <code>Hexo</code> 目录下的 <code>source</code> 根目录下添加一个 <code>README.m</code>d 文件，修改站点配置文件 <code>_config.yml</code> ，将 <code>skip_render</code> 参数的值设置为：<br><figure class="highlight avrasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">skip_render:</span> README.md</span><br></pre></td></tr></table></figure></p>
 <p>保存退出即可。再次使用 <code>hexo d</code> 命令部署博客的时候就不会在渲染 <code>README.md</code> 这个文件了。</p>
 <h3 id="30-文章加密访问"><a href="#30-文章加密访问" class="headerlink" title="30. 文章加密访问"></a>30. 文章加密访问</h3><p>打开 <code>themes/next/layout/_partials/head.swig</code>文件,在 <code></code> 之前插入代码：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">  &lt;script&gt;</span><br><span class="line">    (<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(<span class="string">'&#123;&#123; page.password &#125;&#125;'</span>)&#123;</span><br><span class="line">            <span class="keyword">if</span> (prompt(<span class="string">'请输入文章密码'</span>) !== <span class="string">'&#123;&#123; page.password &#125;&#125;'</span>)&#123;</span><br><span class="line">                alert(<span class="string">'密码错误'</span>);</span><br><span class="line">                history.back();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)();</span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br></pre></td></tr></table></figure>
@@ -866,10 +866,6 @@
                     
                       
                     
-                      
-                    
-                      
-                    
                     <span class="site-state-item-count">5</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
@@ -882,8 +878,6 @@
                 <div class="site-state-item site-state-tags">
                   <a href="/tags/index.html">
                     
-                    
-                      
                     
                       
                     
