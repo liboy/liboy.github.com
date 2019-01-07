@@ -145,24 +145,29 @@
 
 
 
-  <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+  <meta name="description" content="内存中的五大区域  栈区(stack)： 存放函数的参数值、局部变量的值等， 由编译器自动分配释放，通常在函数执行结束后就释放了，其操作方式类似数据结构中的栈。 栈内存分配运算内置于处理器的指令集，效率很高。 分配的内存容量有限，比如iOS中栈区的大小是512k。 堆区(heap) C 语言使用 malloc、calloc、realloc 函数分配的空间，需要使用 free 函数释放 由程序员分配">
+<meta name="keywords" content="iOS,内存管理">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="http://liboy.site/undefined/index.html">
+<meta property="og:title" content="iOS-内存管理">
+<meta property="og:url" content="http://liboy.site/66907237.html">
 <meta property="og:site_name" content="liberty&#39;s Blog">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta property="og:description" content="内存中的五大区域  栈区(stack)： 存放函数的参数值、局部变量的值等， 由编译器自动分配释放，通常在函数执行结束后就释放了，其操作方式类似数据结构中的栈。 栈内存分配运算内置于处理器的指令集，效率很高。 分配的内存容量有限，比如iOS中栈区的大小是512k。 堆区(heap) C 语言使用 malloc、calloc、realloc 函数分配的空间，需要使用 free 函数释放 由程序员分配">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-12-05T03:22:14.508Z">
+<meta property="og:image" content="http://liboy.site/assets/内存管理1.png">
+<meta property="og:image" content="http://liboy.site/assets/内存管理2.jpg">
+<meta property="og:image" content="http://liboy.site/assets/内存管理3.jpg">
+<meta property="og:updated_time" content="2019-01-04T05:58:27.228Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hello World">
-<meta name="twitter:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta name="twitter:title" content="iOS-内存管理">
+<meta name="twitter:description" content="内存中的五大区域  栈区(stack)： 存放函数的参数值、局部变量的值等， 由编译器自动分配释放，通常在函数执行结束后就释放了，其操作方式类似数据结构中的栈。 栈内存分配运算内置于处理器的指令集，效率很高。 分配的内存容量有限，比如iOS中栈区的大小是512k。 堆区(heap) C 语言使用 malloc、calloc、realloc 函数分配的空间，需要使用 free 函数释放 由程序员分配">
+<meta name="twitter:image" content="http://liboy.site/assets/内存管理1.png">
 
 
 
 
 
 
-  <link rel="canonical" href="http://liboy.site/undefined/"/>
+  <link rel="canonical" href="http://liboy.site/66907237.html"/>
 
 
 
@@ -172,7 +177,7 @@
   };
 </script>
 
-  <title>Hello World | liberty's Blog</title>
+  <title>iOS-内存管理 | liberty's Blog</title>
   
 
 
@@ -423,7 +428,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://liboy.site/undefined/">
+    <link itemprop="mainEntityOfPage" href="http://liboy.site/66907237.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="liberty">
@@ -440,7 +445,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Hello World
+          <h1 class="post-title" itemprop="name headline">iOS-内存管理
               
             
           </h1>
@@ -465,7 +470,7 @@
                 
               
 
-              <time title="创建时间：2018-07-21 16:28:19" itemprop="dateCreated datePublished" datetime="2018-07-21T16:28:19+08:00">2018-07-21</time>
+              <time title="创建时间：2018-07-23 10:36:00" itemprop="dateCreated datePublished" datetime="2018-07-23T10:36:00+08:00">2018-07-23</time>
             
 
             
@@ -482,11 +487,29 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2018-12-05 11:22:14" itemprop="dateModified" datetime="2018-12-05T11:22:14+08:00">2018-12-05</time>
+                <time title="修改时间：2019-01-04 13:58:27" itemprop="dateModified" datetime="2019-01-04T13:58:27+08:00">2019-01-04</time>
               
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/iOS/" itemprop="url" rel="index"><span itemprop="name">iOS</span></a></span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -496,8 +519,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/undefined/#comments" itemprop="discussionUrl">
-                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/undefined/" itemprop="commentCount"></span>
+                <a href="/66907237.html#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/66907237.html" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -519,7 +542,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">431</span>
+                <span title="本文字数">2.3k</span>
               
 
               
@@ -533,7 +556,7 @@
                 
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
-                <span title="阅读时长">1 分钟</span>
+                <span title="阅读时长">2 分钟</span>
               
             </div>
           
@@ -553,16 +576,90 @@
       
 
       
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
+        <h2 id="内存中的五大区域"><a href="#内存中的五大区域" class="headerlink" title="内存中的五大区域"></a>内存中的五大区域</h2><p><img src="/assets/内存管理1.png" alt=""></p>
+<ul>
+<li>栈区(stack)：</li>
+<li>存放函数的参数值、局部变量的值等，</li>
+<li>由编译器自动分配释放，通常在函数执行结束后就释放了，其操作方式类似数据结构中的栈。</li>
+<li>栈内存分配运算内置于处理器的指令集，效率很高。</li>
+<li>分配的内存容量有限，比如iOS中栈区的大小是512k。</li>
+<li>堆区(heap)</li>
+<li>C 语言使用 malloc、calloc、realloc 函数分配的空间，需要使用 free 函数释放</li>
+<li>由程序员分配释放，若程序员不释放，会出现内存泄漏</li>
+<li>分配方式类似于链表。</li>
+<li>堆区的大小由系统决定，包括：系统内存／磁盘交换空间</li>
+<li>静态区(BSS段)：全局变量和静态变量的存储是放在一块的，初始化的全局变量和静态变量在一块区域，未初始化的全局变量和未初始化的静态变量在相邻的另一块区域。程序结束后，由系统释放。</li>
+<li>常量区(数据段)：常量存储在这里，不允许修改的。</li>
+<li>代码区：存放函数体的二进制代码。</li>
+</ul>
 <a id="more"></a>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+<p><img src="/assets/内存管理2.jpg" alt=""><br><img src="/assets/内存管理3.jpg" alt=""></p>
+<ul>
+<li>栈区职责（存储的内容）</li>
+<li>局部变量</li>
+<li>方法实参</li>
+</ul>
+<h2 id="栈区的特点"><a href="#栈区的特点" class="headerlink" title="栈区的特点"></a>栈区的特点</h2><ul>
+<li>存储空间有限 . iphone的栈区大小只有512k(默认) ,非常有限</li>
+<li>栈区的地址是连续的</li>
+<li>栈区地址按照分配的顺序，由大到小顺序排列</li>
+<li>访问速度快.</li>
+<li>栈区的内存由系统管理</li>
+<li>后进先出/先进后出</li>
+</ul>
+<h3 id="栈区的工作原理"><a href="#栈区的工作原理" class="headerlink" title="栈区的工作原理"></a>栈区的工作原理</h3><ul>
+<li>开启栈帧</li>
+<li>保存实参</li>
+<li>保存局部变量</li>
+<li>方法完成后弹栈，销毁栈帧，释放空间</li>
+</ul>
+<h2 id="堆区的特点"><a href="#堆区的特点" class="headerlink" title="堆区的特点"></a>堆区的特点</h2><p>堆区的大小由系统决定，包括：系统内存／磁盘交换空间</p>
+<ul>
+<li>所有程序共享</li>
+<li>存储大数据</li>
+<li>程序员管理</li>
+<li>堆区的地址是不连续的</li>
+<li>速度没有栈区快</li>
+<li>堆区的访问速度没有栈区快,因为我们要访问堆区中创建对象的属性, 必须先需要通过变量找到栈区的地址,再通过地址定位到到堆区中的某一个位置, 只有找个这个位置之后,我们才可以访问到存储到这个对象中属性对应的数值.由于有了 这个地址寻找的过程,所有速度没有栈区的快.</li>
+</ul>
+<h2 id="全局变量／静态变量／常量保存的内存区域"><a href="#全局变量／静态变量／常量保存的内存区域" class="headerlink" title="全局变量／静态变量／常量保存的内存区域"></a>全局变量／静态变量／常量保存的内存区域</h2><ul>
+<li>教科书中 <code>全局变量</code> 和 <code>静态变量</code></li>
+<li>有初始值保存在 <code>数据段（常量区）</code></li>
+<li><p>没有初始值保存在 <code>BSS段（静态区）</code>，设置初始值后，会被移动到 <code>数据段（常量区）</code></p>
+</li>
+<li><p>Xcode 8 中 <code>全局变量</code> 和 <code>静态变量</code></p>
+</li>
+<li>无论是否设置初始值，都保存在 <code>BSS段（静态区）</code></li>
+<li>常量 存储在 数据段（常量区））</li>
+<li>不能把 全局变量 定义在头文件中，否则会出现重复定义<h3 id="验证"><a href="#验证" class="headerlink" title="验证:"></a>验证:</h3><figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#import <span class="meta-string">&lt;Foundation/Foundation.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="built_in">NSInteger</span> num1 = <span class="number">10</span>;</span><br><span class="line"><span class="built_in">NSInteger</span> num2;</span><br><span class="line"></span><br><span class="line"><span class="keyword">static</span> <span class="built_in">NSInteger</span> sNum1 = <span class="number">10</span>;</span><br><span class="line"><span class="keyword">static</span> <span class="built_in">NSInteger</span> sNum2;</span><br><span class="line"><span class="keyword">const</span> <span class="built_in">NSInteger</span> cNum = <span class="number">10000</span>;<span class="comment">//定义一个常量</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> main(<span class="keyword">int</span> argc, <span class="keyword">const</span> <span class="keyword">char</span> * argv[]) &#123;</span><br><span class="line"><span class="keyword">@autoreleasepool</span> &#123;</span><br><span class="line"><span class="built_in">NSLog</span>(<span class="string">@"第1个全局变量的地址%p"</span>, &amp;num1);</span><br><span class="line"><span class="built_in">NSLog</span>(<span class="string">@"第2个全局变量的地址%p"</span>, &amp;num2);</span><br><span class="line">num2=<span class="number">100</span>;</span><br><span class="line"><span class="built_in">NSLog</span>(<span class="string">@"第2个全局变量的地址%p(初始化后的)"</span>, &amp;num2);</span><br><span class="line"><span class="built_in">NSLog</span>(<span class="string">@"##############################################"</span>);</span><br><span class="line"><span class="built_in">NSLog</span>(<span class="string">@"第1个静态的全局变量的地址%p"</span>, &amp;sNum1);</span><br><span class="line"><span class="built_in">NSLog</span>(<span class="string">@"第2个静态的全局变量的地址%p"</span>, &amp;sNum2);</span><br><span class="line">sNum2=<span class="number">100</span>;</span><br><span class="line"><span class="built_in">NSLog</span>(<span class="string">@"第2个静态的全局变量的地址%p(初始化后的)"</span>, &amp;sNum2);</span><br><span class="line"><span class="comment">//第2个静态的全局变量的地址0x100001230(初始化后的)</span></span><br><span class="line"><span class="built_in">NSLog</span>(<span class="string">@"##############################################"</span>);</span><br><span class="line"><span class="built_in">NSLog</span>(<span class="string">@"第1个常量的地址%p"</span>, &amp;cNum);</span><br><span class="line"><span class="comment">//第1个常量的地址0x100000e88</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">第<span class="number">1</span>个全局变量的地址<span class="number">0x100001218</span></span><br><span class="line">第<span class="number">2</span>个全局变量的地址<span class="number">0x100001228</span></span><br><span class="line">第<span class="number">2</span>个全局变量的地址<span class="number">0x100001228</span>(初始化后的)</span><br><span class="line"><span class="meta">#################</span></span><br><span class="line">第<span class="number">1</span>个静态的全局变量的地址<span class="number">0x100001220</span></span><br><span class="line">第<span class="number">2</span>个静态的全局变量的地址<span class="number">0x100001230</span></span><br><span class="line">第<span class="number">2</span>个静态的全局变量的地址<span class="number">0x100001230</span>(初始化后的)</span><br><span class="line"><span class="meta">##################</span></span><br><span class="line">第<span class="number">1</span>个常量的地址<span class="number">0x100000e88</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="静态变量"><a href="#静态变量" class="headerlink" title="静态变量"></a>静态变量</h2><ul>
+<li>在 BSS 段为 静态变量 分配空间</li>
+<li>为 静态变量 设置初始值，如果没有指定初始值，会使用 0 来作为初始值</li>
+<li>static 关键字定义静态变量的代码，只会被执行一次！</li>
+</ul>
+<h3 id="正确用法"><a href="#正确用法" class="headerlink" title="正确用法"></a>正确用法</h3><ul>
+<li>如果只有一个方法使用，将 静态变量 定义在方法内部</li>
+<li>如果有多个方法使用，将 静态变量 定义在 .m 中</li>
+<li>不要把静态变量定义在头文件中</li>
+</ul>
+<h2 id="常量"><a href="#常量" class="headerlink" title="常量"></a>常量</h2><ul>
+<li>在 <code>数据段</code> 为常量分配空间</li>
+<li>const 关键字保证其后修饰的常量的值不允许被修改</li>
+<li>在程序被加载到内存时，就会为常量分配空间并且设置初始值</li>
+<li>如果没有指定初始值，会使用 0 作为初始值</li>
+</ul>
+<h3 id="正确用法-1"><a href="#正确用法-1" class="headerlink" title="正确用法"></a>正确用法</h3><ul>
+<li><p>在 <code>.m</code> 中定义常量并且设置初始值</p>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="built_in">NSInteger</span> cNum = <span class="number">99</span>;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在 <code>.h</code> 中使用 <code>extern</code> 关键字声明常量在其他位置定义并且已经赋值，外部可以直接使用</p>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">extern</span> <span class="keyword">const</span> <span class="built_in">NSInteger</span> cNum;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>常量名应该尽量的长以避免出现重名</p>
+</li>
+</ul>
 
       
     </div>
@@ -584,6 +681,14 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/iOS/" rel="tag"><i class="fa fa-tag"></i> iOS</a>
+          
+            <a href="/tags/内存管理/" rel="tag"><i class="fa fa-tag"></i> 内存管理</a>
+          
+        </div>
+      
 
       
       
@@ -593,14 +698,18 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/1243066710.html" rel="next" title="Hello World">
+                <i class="fa fa-chevron-left"></i> Hello World
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/undefined/" rel="prev" title="iOS-内存管理">
-                iOS-内存管理 <i class="fa fa-chevron-right"></i>
+              <a href="/2837359220.html" rel="prev" title="Git学习笔记">
+                Git学习笔记 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -679,7 +788,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">2</span>
+                    <span class="site-state-item-count">4</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -694,7 +803,19 @@
                     
                       
                     
-                    <span class="site-state-item-count">1</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">5</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -711,7 +832,19 @@
                     
                       
                     
-                    <span class="site-state-item-count">2</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">7</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -761,7 +894,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Quick-Start"><span class="nav-number">1.</span> <span class="nav-text">Quick Start</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Create-a-new-post"><span class="nav-number">1.1.</span> <span class="nav-text">Create a new post</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Run-server"><span class="nav-number">1.2.</span> <span class="nav-text">Run server</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Generate-static-files"><span class="nav-number">1.3.</span> <span class="nav-text">Generate static files</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Deploy-to-remote-sites"><span class="nav-number">1.4.</span> <span class="nav-text">Deploy to remote sites</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#内存中的五大区域"><span class="nav-number">1.</span> <span class="nav-text">内存中的五大区域</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#栈区的特点"><span class="nav-number">2.</span> <span class="nav-text">栈区的特点</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#栈区的工作原理"><span class="nav-number">2.1.</span> <span class="nav-text">栈区的工作原理</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#堆区的特点"><span class="nav-number">3.</span> <span class="nav-text">堆区的特点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#全局变量／静态变量／常量保存的内存区域"><span class="nav-number">4.</span> <span class="nav-text">全局变量／静态变量／常量保存的内存区域</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#验证"><span class="nav-number">4.1.</span> <span class="nav-text">验证:</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#静态变量"><span class="nav-number">5.</span> <span class="nav-text">静态变量</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#正确用法"><span class="nav-number">5.1.</span> <span class="nav-text">正确用法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#常量"><span class="nav-number">6.</span> <span class="nav-text">常量</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#正确用法-1"><span class="nav-number">6.1.</span> <span class="nav-text">正确用法</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -793,7 +926,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="站点总字数">3k</span>
+    <span title="站点总字数">38k</span>
   
 
   
@@ -802,7 +935,7 @@
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="站点阅读时长">3 分钟</span>
+    <span title="站点阅读时长">35 分钟</span>
   
 </div>
 
