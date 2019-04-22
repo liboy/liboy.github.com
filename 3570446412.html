@@ -145,18 +145,18 @@
 
 
 
-  <meta name="description" content="RunloopRunLoop对象 CFRunLoopRef 是在 CoreFoundation 框架内的，它提供了纯 C 函数的 API，所有这些 API 都是线程安全的。  NSRunLoop 是基于 CFRunLoopRef 的封装，提供了面向对象的 API，但是这些 API 不是线程安全的。   CFRunLoopRef 的代码是开源的，你可以在这里 http://opensource.ap">
+  <meta name="description" content="RunloopRunLoop对象 CFRunLoopRef 是在 CoreFoundation 框架内的，它提供了纯 C 函数的 API，所有这些 API 都是线程安全的。 NSRunLoop 是基于 CFRunLoopRef 的封装，提供了面向对象的 API，但是这些 API 不是线程安全的。  CFRunLoopRef 的代码是开源的，你可以在这里 http://opensource.appl">
 <meta name="keywords" content="RunLoop">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Runloop">
 <meta property="og:url" content="http://liboy.site/3570446412.html">
 <meta property="og:site_name" content="liberty&#39;s Blog">
-<meta property="og:description" content="RunloopRunLoop对象 CFRunLoopRef 是在 CoreFoundation 框架内的，它提供了纯 C 函数的 API，所有这些 API 都是线程安全的。  NSRunLoop 是基于 CFRunLoopRef 的封装，提供了面向对象的 API，但是这些 API 不是线程安全的。   CFRunLoopRef 的代码是开源的，你可以在这里 http://opensource.ap">
+<meta property="og:description" content="RunloopRunLoop对象 CFRunLoopRef 是在 CoreFoundation 框架内的，它提供了纯 C 函数的 API，所有这些 API 都是线程安全的。 NSRunLoop 是基于 CFRunLoopRef 的封装，提供了面向对象的 API，但是这些 API 不是线程安全的。  CFRunLoopRef 的代码是开源的，你可以在这里 http://opensource.appl">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-04-22T14:43:52.944Z">
+<meta property="og:updated_time" content="2019-04-22T15:13:02.279Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Runloop">
-<meta name="twitter:description" content="RunloopRunLoop对象 CFRunLoopRef 是在 CoreFoundation 框架内的，它提供了纯 C 函数的 API，所有这些 API 都是线程安全的。  NSRunLoop 是基于 CFRunLoopRef 的封装，提供了面向对象的 API，但是这些 API 不是线程安全的。   CFRunLoopRef 的代码是开源的，你可以在这里 http://opensource.ap">
+<meta name="twitter:description" content="RunloopRunLoop对象 CFRunLoopRef 是在 CoreFoundation 框架内的，它提供了纯 C 函数的 API，所有这些 API 都是线程安全的。 NSRunLoop 是基于 CFRunLoopRef 的封装，提供了面向对象的 API，但是这些 API 不是线程安全的。  CFRunLoopRef 的代码是开源的，你可以在这里 http://opensource.appl">
 
 
 
@@ -483,7 +483,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-04-22 22:43:52" itemprop="dateModified" datetime="2019-04-22T22:43:52+08:00">2019-04-22</time>
+                <time title="修改时间：2019-04-22 23:13:02" itemprop="dateModified" datetime="2019-04-22T23:13:02+08:00">2019-04-22</time>
               
             
           </span>
@@ -500,7 +500,14 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/RunLoop/" itemprop="url" rel="index"><span itemprop="name">RunLoop</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/iOS/" itemprop="url" rel="index"><span itemprop="name">iOS</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/iOS/RunLoop/" itemprop="url" rel="index"><span itemprop="name">RunLoop</span></a></span>
 
                 
                 
@@ -538,7 +545,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">7.8k</span>
+                <span title="本文字数">9.6k</span>
               
 
               
@@ -552,7 +559,7 @@
                 
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
-                <span title="阅读时长">7 分钟</span>
+                <span title="阅读时长">9 分钟</span>
               
             </div>
           
@@ -573,10 +580,8 @@
 
       
         <h1 id="Runloop"><a href="#Runloop" class="headerlink" title="Runloop"></a>Runloop</h1><h2 id="RunLoop对象"><a href="#RunLoop对象" class="headerlink" title="RunLoop对象"></a>RunLoop对象</h2><ul>
-<li><p>CFRunLoopRef 是在 CoreFoundation 框架内的，它提供了纯 C 函数的 API，所有这些 API 都是线程安全的。</p>
-</li>
-<li><p>NSRunLoop 是基于 CFRunLoopRef 的封装，提供了面向对象的 API，但是这些 API 不是线程安全的。</p>
-</li>
+<li>CFRunLoopRef 是在 CoreFoundation 框架内的，它提供了纯 C 函数的 API，所有这些 API 都是线程安全的。</li>
+<li>NSRunLoop 是基于 CFRunLoopRef 的封装，提供了面向对象的 API，但是这些 API 不是线程安全的。</li>
 </ul>
 <p>CFRunLoopRef 的代码是开源的，你可以在这里 <a href="http://opensource.apple.com/tarballs/CF" target="_blank" rel="noopener">http://opensource.apple.com/tarballs/CF</a> 下载到整个 CoreFoundation 的源码。</p>
 <h3 id="获得RunLoop对象"><a href="#获得RunLoop对象" class="headerlink" title="获得RunLoop对象"></a>获得RunLoop对象</h3><figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//Foundation</span></span><br><span class="line">[<span class="built_in">NSRunLoop</span> currentRunLoop]; <span class="comment">// 获得当前线程的RunLoop对象</span></span><br><span class="line">[<span class="built_in">NSRunLoop</span> mainRunLoop]; <span class="comment">// 获得主线程的RunLoop对象</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//Core Foundation</span></span><br><span class="line"><span class="built_in">CFRunLoopGetCurrent</span>(); <span class="comment">// 获得当前线程的RunLoop对象</span></span><br><span class="line"><span class="built_in">CFRunLoopGetMain</span>(); <span class="comment">// 获得主线程的RunLoop对象</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//NSRunLoop &lt;--&gt; CFRunLoopRef 相互转化</span></span><br><span class="line"><span class="built_in">NSLog</span>(<span class="string">@"NSRunLoop &lt;--&gt; CFRunloop == %p--%p"</span>,<span class="built_in">CFRunLoopGetMain</span>() , [<span class="built_in">NSRunLoop</span> mainRunLoop].getCFRunLoop);</span><br><span class="line"></span><br><span class="line"><span class="meta">#【打印结果】：内存地址相同</span></span><br><span class="line"><span class="number">0000</span><span class="number">-00</span><span class="number">-13</span> <span class="number">00</span>:<span class="number">30</span>:<span class="number">16.527</span> MultiThreading[<span class="number">57703</span>:<span class="number">1217113</span>] <span class="built_in">NSRunLoop</span> &lt;--&gt; <span class="built_in">CFRunloop</span> == <span class="number">0x60000016a680</span>-<span class="number">-0x60000016a680</span></span><br></pre></td></tr></table></figure>
@@ -625,6 +630,22 @@
 <li>AutoreleasePool 自动释放池</li>
 <li>UI更新</li>
 </ul>
+<h3 id="NSTimer"><a href="#NSTimer" class="headerlink" title="NSTimer"></a>NSTimer</h3><p>NSTimer 其实就是 CFRunLoopTimerRef，他们之间是 toll-free bridged 的。一个 NSTimer 注册到 RunLoop 后，RunLoop 会为其重复的时间点注册好事件。例如 10:00, 10:10, 10:20 这几个时间点。RunLoop为了节省资源，并不会在非常准确的时间点回调这个Timer。Timer 有个属性叫做 Tolerance (宽容度)，标示了当时间点到后，容许有多少最大误差。如果某个时间点被错过了，例如执行了一个很长的任务，则那个时间点的回调也会跳过去，不会延后执行。就比如等公交，如果 10:10 时我忙着玩手机错过了那个点的公交，那我只能等 10:20 这一趟了。</p>
+<h4 id="创建"><a href="#创建" class="headerlink" title="创建"></a>创建</h4><figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/// 一种是timerWithXXX，</span></span><br><span class="line">+ (<span class="built_in">NSTimer</span> *)timerWithTimeInterval:(<span class="built_in">NSTimeInterval</span>)ti target:(<span class="keyword">id</span>)aTarget selector:(SEL)aSelector userInfo:(<span class="keyword">nullable</span> <span class="keyword">id</span>)userInfo repeats:(<span class="built_in">BOOL</span>)yesOrNo</span><br><span class="line"><span class="comment">/// 一种是scheduedTimerWithXXX</span></span><br><span class="line">+ (<span class="built_in">NSTimer</span> *)scheduledTimerWithTimeInterval:(<span class="built_in">NSTimeInterval</span>)ti target:(<span class="keyword">id</span>)aTarget selector:(SEL)aSelector userInfo:(<span class="keyword">nullable</span> <span class="keyword">id</span>)userInfo repeats:(<span class="built_in">BOOL</span>)yesOrNo</span><br><span class="line">``` </span><br><span class="line"></span><br><span class="line"><span class="meta">#### 区别：</span></span><br><span class="line">- 后者除了创建一个定时器外会自动以<span class="built_in">NSDefaultRunLoopModeMode</span>添加到当前线程RunLoop中</span><br><span class="line">- 不添加到RunLoop中的<span class="built_in">NSTimer</span>是无法正常工作的。</span><br><span class="line"></span><br><span class="line"><span class="meta">#### 注意事项</span></span><br><span class="line"></span><br><span class="line">- 注意timer添加到runloop时应该设置为什么mode</span><br><span class="line">- 注意timer在不需要时，一定要调用invalidate方法释放定时器</span><br><span class="line">- <span class="built_in">NSTimer</span>不是一种实时机制，可能存在误差</span><br><span class="line"></span><br><span class="line"><span class="meta">#### UITableView 与 NSTimer 冲突</span></span><br><span class="line">解决方案：</span><br></pre></td></tr></table></figure>
+<ol>
+<li>更改RunLoop运行Mode（NSRunLoopCommonModes）<br>[[NSRunLoop currentRunLoop] addTimer:timer forMode:NSRunLoopCommonModes];</li>
+<li>将NSTimer放到新的线程中<br>NSThread *thread = [[NSThread alloc] initWithTarget:self selector:@selector(newThread) object:nil];<br> [thread start];</li>
+</ol>
+<ul>
+<li>(void)newThread{<br>  @autoreleasepool{<pre><code>//在当前Run Loop中添加timer，模式是默认的NSDefaultRunLoopMode
+timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(incrementCounter:) userInfo: nil repeats:YES];
+//开始执行新线程的Run Loop，如果不启动run loop，timer的事件是不会响应的
+[[NSRunLoop currentRunLoop] run];
+</code></pre>  }<br>}<br><code>`</code></li>
+</ul>
+<blockquote>
+<p>CADisplayLink是一个执行频率（fps）和屏幕刷新相同（可以修改preferredFramesPerSecond改变刷新频率）的定时器，它也需要加入到RunLoop才能执行。与NSTimer类似，CADisplayLink同样是基于CFRunloopTimerRef实现，底层使用mk_timer（可以比较加入到RunLoop前后RunLoop中timer的变化）。和NSTimer相比它精度更高（尽管NSTimer也可以修改精度），不过和NStimer类似的是如果遇到大任务它仍然存在丢帧现象。通常情况下CADisaplayLink用于构建帧动画，看起来相对更加流畅，而NSTimer则有更广泛的用处。</p>
+</blockquote>
 <h3 id="PerformSelecter"><a href="#PerformSelecter" class="headerlink" title="PerformSelecter"></a>PerformSelecter</h3><ul>
 <li>performSelecter:afterDelay: 实际上其内部会创建一个 Timer 并添加到当前线程的 RunLoop 中</li>
 <li>performSelector:onThread: 实际上其会创建一个Timer加到对应的线程</li>
@@ -679,8 +700,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/3358042383.html" rel="next" title="Hexo+Next主题优化">
-                <i class="fa fa-chevron-left"></i> Hexo+Next主题优化
+              <a href="/1985083902.html" rel="next" title="常驻线程">
+                <i class="fa fa-chevron-left"></i> 常驻线程
               </a>
             
           </div>
@@ -689,8 +710,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/1852943616.html" rel="prev" title="NSTimer">
-                NSTimer <i class="fa fa-chevron-right"></i>
+              <a href="/1981037120.html" rel="prev" title="RunLoop内部实现">
+                RunLoop内部实现 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -769,7 +790,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">11</span>
+                    <span class="site-state-item-count">10</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -794,7 +815,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">6</span>
+                      
+                    
+                    <span class="site-state-item-count">7</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -827,11 +850,7 @@
                     
                       
                     
-                      
-                    
-                      
-                    
-                    <span class="site-state-item-count">11</span>
+                    <span class="site-state-item-count">10</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -881,7 +900,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Runloop"><span class="nav-number">1.</span> <span class="nav-text">Runloop</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#RunLoop对象"><span class="nav-number">1.1.</span> <span class="nav-text">RunLoop对象</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#获得RunLoop对象"><span class="nav-number">1.1.1.</span> <span class="nav-text">获得RunLoop对象</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#作用"><span class="nav-number">1.2.</span> <span class="nav-text">作用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Runloop-开启-amp-退出"><span class="nav-number">1.3.</span> <span class="nav-text">Runloop 开启&amp;退出</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Runloop和线程关系"><span class="nav-number">1.4.</span> <span class="nav-text">Runloop和线程关系</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#模拟-RunLoop-实现"><span class="nav-number">1.5.</span> <span class="nav-text">模拟 RunLoop 实现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#运行循环与时钟"><span class="nav-number">1.6.</span> <span class="nav-text">运行循环与时钟</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#RunLoop应用"><span class="nav-number">1.7.</span> <span class="nav-text">RunLoop应用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#PerformSelecter"><span class="nav-number">1.7.1.</span> <span class="nav-text">PerformSelecter</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#UI更新"><span class="nav-number">1.7.2.</span> <span class="nav-text">UI更新</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#GCD和RunLoop的关系"><span class="nav-number">1.7.3.</span> <span class="nav-text">GCD和RunLoop的关系</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#更多RunLoop使用"><span class="nav-number">1.7.4.</span> <span class="nav-text">更多RunLoop使用</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#常见面试题"><span class="nav-number">1.8.</span> <span class="nav-text">常见面试题</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Runloop"><span class="nav-number">1.</span> <span class="nav-text">Runloop</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#RunLoop对象"><span class="nav-number">1.1.</span> <span class="nav-text">RunLoop对象</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#获得RunLoop对象"><span class="nav-number">1.1.1.</span> <span class="nav-text">获得RunLoop对象</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#作用"><span class="nav-number">1.2.</span> <span class="nav-text">作用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Runloop-开启-amp-退出"><span class="nav-number">1.3.</span> <span class="nav-text">Runloop 开启&amp;退出</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Runloop和线程关系"><span class="nav-number">1.4.</span> <span class="nav-text">Runloop和线程关系</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#模拟-RunLoop-实现"><span class="nav-number">1.5.</span> <span class="nav-text">模拟 RunLoop 实现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#运行循环与时钟"><span class="nav-number">1.6.</span> <span class="nav-text">运行循环与时钟</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#RunLoop应用"><span class="nav-number">1.7.</span> <span class="nav-text">RunLoop应用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#NSTimer"><span class="nav-number">1.7.1.</span> <span class="nav-text">NSTimer</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#创建"><span class="nav-number">1.7.1.1.</span> <span class="nav-text">创建</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#PerformSelecter"><span class="nav-number">1.7.2.</span> <span class="nav-text">PerformSelecter</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#UI更新"><span class="nav-number">1.7.3.</span> <span class="nav-text">UI更新</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#GCD和RunLoop的关系"><span class="nav-number">1.7.4.</span> <span class="nav-text">GCD和RunLoop的关系</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#更多RunLoop使用"><span class="nav-number">1.7.5.</span> <span class="nav-text">更多RunLoop使用</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#常见面试题"><span class="nav-number">1.8.</span> <span class="nav-text">常见面试题</span></a></li></ol></li></ol></div>
             
 
           </div>
