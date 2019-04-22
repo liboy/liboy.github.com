@@ -1,0 +1,1458 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html class="theme-next pisces" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|TypoUpright:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.6.0" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.6.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.6.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.6.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.6.0" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '6.6.0',
+    sidebar: {"position":"left","display":"post","offset":20,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="RunloopRunLoop对象 CFRunLoopRef 是在 CoreFoundation 框架内的，它提供了纯 C 函数的 API，所有这些 API 都是线程安全的。  NSRunLoop 是基于 CFRunLoopRef 的封装，提供了面向对象的 API，但是这些 API 不是线程安全的。   CFRunLoopRef 的代码是开源的，你可以在这里 http://opensource.ap">
+<meta name="keywords" content="RunLoop">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Runloop">
+<meta property="og:url" content="http://liboy.site/3570446412.html">
+<meta property="og:site_name" content="liberty&#39;s Blog">
+<meta property="og:description" content="RunloopRunLoop对象 CFRunLoopRef 是在 CoreFoundation 框架内的，它提供了纯 C 函数的 API，所有这些 API 都是线程安全的。  NSRunLoop 是基于 CFRunLoopRef 的封装，提供了面向对象的 API，但是这些 API 不是线程安全的。   CFRunLoopRef 的代码是开源的，你可以在这里 http://opensource.ap">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-04-22T14:43:52.944Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Runloop">
+<meta name="twitter:description" content="RunloopRunLoop对象 CFRunLoopRef 是在 CoreFoundation 框架内的，它提供了纯 C 函数的 API，所有这些 API 都是线程安全的。  NSRunLoop 是基于 CFRunLoopRef 的封装，提供了面向对象的 API，但是这些 API 不是线程安全的。   CFRunLoopRef 的代码是开源的，你可以在这里 http://opensource.ap">
+
+
+
+
+
+
+  <link rel="canonical" href="http://liboy.site/3570446412.html"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>Runloop | liberty's Blog</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">liberty's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">记录、分享、交流</p>
+      
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br />首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br />关于</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br />标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br />分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br />归档</a>
+
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />搜索</a>
+        </li>
+      
+    </ul>
+  
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://liboy.site/3570446412.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="liberty">
+      <meta itemprop="description" content="每天进步一点点，坚持带来大改变!">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="liberty's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Runloop
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2017-11-07 15:00:38" itemprop="dateCreated datePublished" datetime="2017-11-07T15:00:38+08:00">2017-11-07</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-04-22 22:43:52" itemprop="dateModified" datetime="2019-04-22T22:43:52+08:00">2019-04-22</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/RunLoop/" itemprop="url" rel="index"><span itemprop="name">RunLoop</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/3570446412.html#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/3570446412.html" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">本文字数：</span>
+                
+                <span title="本文字数">7.8k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">7 分钟</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="Runloop"><a href="#Runloop" class="headerlink" title="Runloop"></a>Runloop</h1><h2 id="RunLoop对象"><a href="#RunLoop对象" class="headerlink" title="RunLoop对象"></a>RunLoop对象</h2><ul>
+<li><p>CFRunLoopRef 是在 CoreFoundation 框架内的，它提供了纯 C 函数的 API，所有这些 API 都是线程安全的。</p>
+</li>
+<li><p>NSRunLoop 是基于 CFRunLoopRef 的封装，提供了面向对象的 API，但是这些 API 不是线程安全的。</p>
+</li>
+</ul>
+<p>CFRunLoopRef 的代码是开源的，你可以在这里 <a href="http://opensource.apple.com/tarballs/CF" target="_blank" rel="noopener">http://opensource.apple.com/tarballs/CF</a> 下载到整个 CoreFoundation 的源码。</p>
+<h3 id="获得RunLoop对象"><a href="#获得RunLoop对象" class="headerlink" title="获得RunLoop对象"></a>获得RunLoop对象</h3><figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//Foundation</span></span><br><span class="line">[<span class="built_in">NSRunLoop</span> currentRunLoop]; <span class="comment">// 获得当前线程的RunLoop对象</span></span><br><span class="line">[<span class="built_in">NSRunLoop</span> mainRunLoop]; <span class="comment">// 获得主线程的RunLoop对象</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//Core Foundation</span></span><br><span class="line"><span class="built_in">CFRunLoopGetCurrent</span>(); <span class="comment">// 获得当前线程的RunLoop对象</span></span><br><span class="line"><span class="built_in">CFRunLoopGetMain</span>(); <span class="comment">// 获得主线程的RunLoop对象</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//NSRunLoop &lt;--&gt; CFRunLoopRef 相互转化</span></span><br><span class="line"><span class="built_in">NSLog</span>(<span class="string">@"NSRunLoop &lt;--&gt; CFRunloop == %p--%p"</span>,<span class="built_in">CFRunLoopGetMain</span>() , [<span class="built_in">NSRunLoop</span> mainRunLoop].getCFRunLoop);</span><br><span class="line"></span><br><span class="line"><span class="meta">#【打印结果】：内存地址相同</span></span><br><span class="line"><span class="number">0000</span><span class="number">-00</span><span class="number">-13</span> <span class="number">00</span>:<span class="number">30</span>:<span class="number">16.527</span> MultiThreading[<span class="number">57703</span>:<span class="number">1217113</span>] <span class="built_in">NSRunLoop</span> &lt;--&gt; <span class="built_in">CFRunloop</span> == <span class="number">0x60000016a680</span>-<span class="number">-0x60000016a680</span></span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<h2 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h2><ol>
+<li>保持程序的持续运行（如：程序一启动就会开启一个主线程（中的 runloop 是自动创建并运行），runloop 保证主线程不会被销毁，也就保证了程序的持续运行）。</li>
+<li>处理App中的各种事件（如：touches 触摸事件、NSTimer 定时器事件、Selector事件（选择器 performSelector））。</li>
+<li>节省CPU资源，提高程序性能（有事情就做事情，没事情就休息 (其资源释放)）。</li>
+<li>负责渲染屏幕上的所有UI。</li>
+</ol>
+<p>附：CFRunLoop.c 源码<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">#【用DefaultMode启动，具体实现查看 CFRunLoopRunSpecific Line2704】</span><br><span class="line">#【RunLoop的主函数，是一个死循环 dowhile】</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">CFRunLoopRun</span><span class="params">(<span class="keyword">void</span>)</span> </span>&#123;   <span class="comment">/* DOES CALLOUT */</span></span><br><span class="line">    <span class="keyword">int32_t</span> result;</span><br><span class="line">    <span class="keyword">do</span> &#123;</span><br><span class="line">        <span class="comment">/*</span></span><br><span class="line"><span class="comment">         参数一：CFRunLoopRunSpecific   具体处理runloop的运行情况</span></span><br><span class="line"><span class="comment">         参数二：CFRunLoopGetCurrent()  当前runloop对象</span></span><br><span class="line"><span class="comment">         参数三：kCFRunLoopDefaultMode  runloop的运行模式的名称</span></span><br><span class="line"><span class="comment">         参数四：1.0e10                 runloop默认的运行时间，即超时为10的九次方</span></span><br><span class="line"><span class="comment">         参数五：returnAfterSourceHandled 回调处理</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">        result = CFRunLoopRunSpecific(CFRunLoopGetCurrent(), kCFRunLoopDefaultMode, <span class="number">1.0e10</span>, <span class="literal">false</span>);</span><br><span class="line">        CHECK_FOR_FORK();</span><br><span class="line">        </span><br><span class="line">        <span class="comment">//【判断】：如果runloop没有停止 且 没有结束则继续循环，相反侧退出。</span></span><br><span class="line">    &#125; <span class="keyword">while</span> (kCFRunLoopRunStopped != result &amp;&amp; kCFRunLoopRunFinished != result);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">#【直观表现】</span><br><span class="line">RunLoop 其实内部就是<span class="keyword">do</span>-<span class="keyword">while</span>循环，在这个循环内部不断地处理各种任务（`比如Source、Timer、Observer`），</span><br><span class="line">通过判断result的值实现的。所以 可以看成是一个死循环。</span><br><span class="line">如果没有RunLoop，UIApplicationMain 函数执行完毕之后将直接返回，就是说程序一启动然后就结束；</span><br></pre></td></tr></table></figure></p>
+<h2 id="Runloop-开启-amp-退出"><a href="#Runloop-开启-amp-退出" class="headerlink" title="Runloop 开启&amp;退出"></a>Runloop 开启&amp;退出</h2><p>验证 Runloop 是在UIApplicationMain 中开启。<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta"># int 类型返回值</span></span><br><span class="line"><span class="function">UIKIT_EXTERN <span class="keyword">int</span> <span class="title">UIApplicationMain</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> *argv[], NSString * __nullable principalClassName, NSString * __nullable delegateClassName)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> * argv[])</span> </span>&#123;</span><br><span class="line">    @autoreleasepool &#123;</span><br><span class="line">        NSLog(@<span class="string">"开始"</span>);</span><br><span class="line">        <span class="keyword">int</span> number = UIApplicationMain(argc, argv, nil, NSStringFromClass([AppDelegate class]));</span><br><span class="line">        NSLog(@<span class="string">"结束"</span>);</span><br><span class="line">        <span class="keyword">return</span> number;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">#【验证结果】：只会打印开始，并不会打印结束。</span><br><span class="line">----</span><br><span class="line">#【Runloop 的退出条件】。</span><br><span class="line">App退出；线程关闭；设置最大时间到期；</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>【注解】：说明在UIApplicationMain函数内部开启了一个和主线程相关的RunLoop (保证主线程不会被销毁)，导致 UIApplicationMain 不会返回，一直在运行中，也就保证了程序的持续运行。</p>
+</blockquote>
+<h2 id="Runloop和线程关系"><a href="#Runloop和线程关系" class="headerlink" title="Runloop和线程关系"></a>Runloop和线程关系</h2><ol>
+<li>每条线程都有唯一的一个与之对应的RunLoop对象，保存在一个字典里。</li>
+</ol>
+<ul>
+<li>创建子线程RunLoop，通过<code>[NSRunLoop currentRunLoop]</code>在子线程内部获取，不获取则不会创建，方法调用时，会先查看字典，有则返回，没有则创建并存入字典中。</li>
+<li>主线程的RunLoop已经自动创建，子线程的RunLoop需要主动创建。</li>
+<li>RunLoop在第一次获取时创建，在线程结束时销毁。</li>
+</ul>
+<p>CFRunLoopRef源码<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"># <span class="number">1.</span> 主线程相关联的RunLoop创建</span><br><span class="line">   <span class="comment">// 创建字典</span></span><br><span class="line">    CFMutableDictionaryRef dict = CFDictionaryCreateMutable(kCFAllocatorSystemDefault, <span class="number">0</span>, <span class="literal">NULL</span>, &amp;kCFTypeDictionaryValueCallBacks);</span><br><span class="line">        <span class="comment">// 创建主线程 根据传入的主线程创建主线程对应的RunLoop</span></span><br><span class="line">    CFRunLoopRef mainLoop = __CFRunLoopCreate(pthread_main_thread_np());</span><br><span class="line">        <span class="comment">// 保存主线程 将主线程-key和RunLoop-Value保存到字典中</span></span><br><span class="line">    CFDictionarySetValue(dict, pthreadPointer(pthread_main_thread_np()), mainLoop);</span><br><span class="line"></span><br><span class="line"># <span class="number">2.</span> 创建与子线程相关联的RunLoop</span><br><span class="line">    <span class="comment">// 从字典中获取子线程的runloop</span></span><br><span class="line">    CFRunLoopRef loop = (CFRunLoopRef)CFDictionaryGetValue(__CFRunLoops, pthreadPointer(t));</span><br><span class="line">    __CFUnlock(&amp;loopsLock);</span><br><span class="line">    <span class="keyword">if</span> (!loop) &#123;</span><br><span class="line">        <span class="comment">// 如果子线程的runloop不存在,那么就为该线程创建一个对应的runloop</span></span><br><span class="line">    CFRunLoopRef newLoop = __CFRunLoopCreate(t);</span><br><span class="line">        __CFLock(&amp;loopsLock);</span><br><span class="line">    loop = (CFRunLoopRef)CFDictionaryGetValue(__CFRunLoops, pthreadPointer(t));</span><br><span class="line">        <span class="comment">// 把当前子线程和对应的runloop保存到字典中</span></span><br><span class="line">    <span class="keyword">if</span> (!loop) &#123;</span><br><span class="line">        CFDictionarySetValue(__CFRunLoops, pthreadPointer(t), newLoop);</span><br><span class="line">        loop = newLoop;</span><br><span class="line">    &#125;</span><br><span class="line">        <span class="comment">// don't release run loops inside the loopsLock, because CFRunLoopDeallocate may end up taking it</span></span><br><span class="line">        __CFUnlock(&amp;loopsLock);</span><br><span class="line">    CFRelease(newLoop);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="模拟-RunLoop-实现"><a href="#模拟-RunLoop-实现" class="headerlink" title="模拟 RunLoop 实现"></a>模拟 RunLoop 实现</h2><figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">#import <span class="meta-string">&lt;objc/message.h&gt;</span></span></span><br><span class="line"></span><br><span class="line">Person *person;</span><br><span class="line"></span><br><span class="line"><span class="keyword">void</span> callFunc(<span class="keyword">int</span> type) &#123;</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"正在执行 %d...%@"</span>, type, person);</span><br><span class="line"></span><br><span class="line">    <span class="built_in">UInt32</span> result = ((<span class="built_in">UInt32</span> (*)(<span class="keyword">id</span>, SEL, <span class="keyword">int</span>, <span class="built_in">NSString</span> *))objc_msgSend)(person, <span class="keyword">@selector</span>(hahaha:name:), type, <span class="string">@"zhangsan"</span>);</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"耗时 %u 秒"</span>, result);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> main(<span class="keyword">int</span> argc, <span class="keyword">const</span> <span class="keyword">char</span> * argv[]) &#123;</span><br><span class="line">    <span class="keyword">@autoreleasepool</span> &#123;</span><br><span class="line">        <span class="keyword">int</span> result = <span class="number">0</span>;</span><br><span class="line">        person = [[Person alloc] init];</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> (<span class="literal">YES</span>) &#123;</span><br><span class="line">            printf(<span class="string">"请输入选择项，0表示退出："</span>);</span><br><span class="line">            scanf(<span class="string">"%d"</span>, &amp;result);</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (result == <span class="number">0</span>) &#123;</span><br><span class="line">                printf(<span class="string">"88\n"</span>);</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                callFunc(result);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="运行循环与时钟"><a href="#运行循环与时钟" class="headerlink" title="运行循环与时钟"></a>运行循环与时钟</h2><figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">ViewController</span> ()</span></span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, <span class="keyword">strong</span>) <span class="built_in">NSTimer</span> *timer;</span><br><span class="line"><span class="keyword">@end</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">@implementation</span> <span class="title">ViewController</span></span></span><br><span class="line"></span><br><span class="line">- (<span class="keyword">void</span>)touchesBegan:(<span class="built_in">NSSet</span> *)touches withEvent:(<span class="built_in">UIEvent</span> *)event &#123;</span><br><span class="line">    <span class="built_in">NSTimer</span> *timer = [<span class="built_in">NSTimer</span> timerWithTimeInterval:<span class="number">1.0</span> target:<span class="keyword">self</span> selector:<span class="keyword">@selector</span>(fire) userInfo:<span class="literal">nil</span> repeats:<span class="literal">YES</span>];</span><br><span class="line">    [[<span class="built_in">NSRunLoop</span> currentRunLoop] addTimer:timer forMode:<span class="built_in">NSRunLoopCommonModes</span>];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (<span class="keyword">void</span>)fire &#123;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">int</span> num = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">///  耗时操作</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">1000</span> * <span class="number">1000</span>; ++i) &#123;</span><br><span class="line">        [<span class="built_in">NSString</span> stringWithFormat:<span class="string">@"hello - %d"</span>, i];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"%d"</span>, num++);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">@end</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>运行测试，会发现卡顿非常严重</p>
+</blockquote>
+<ul>
+<li>将时钟添加到其他线程工作</li>
+</ul>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- (<span class="keyword">void</span>)touchesBegan:(<span class="built_in">NSSet</span> *)touches withEvent:(<span class="built_in">UIEvent</span> *)event &#123;</span><br><span class="line">    <span class="keyword">self</span>.thread = [[<span class="built_in">NSThread</span> alloc] initWithTarget:<span class="keyword">self</span> selector:<span class="keyword">@selector</span>(startTimer) object:<span class="literal">nil</span>];</span><br><span class="line">    [<span class="keyword">self</span>.thread start];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (<span class="keyword">void</span>)startTimer &#123;</span><br><span class="line">    <span class="keyword">@autoreleasepool</span> &#123;</span><br><span class="line">        <span class="built_in">NSTimer</span> *timer = [<span class="built_in">NSTimer</span> timerWithTimeInterval:<span class="number">1.0</span> target:<span class="keyword">self</span> selector:<span class="keyword">@selector</span>(fire) userInfo:<span class="literal">nil</span> repeats:<span class="literal">YES</span>];</span><br><span class="line"></span><br><span class="line">        [[<span class="built_in">NSRunLoop</span> currentRunLoop] addTimer:timer forMode:<span class="built_in">NSDefaultRunLoopMode</span>];</span><br><span class="line"></span><br><span class="line">        _timerRf = <span class="built_in">CFRunLoopGetCurrent</span>();</span><br><span class="line">        <span class="built_in">CFRunLoopRun</span>();</span><br><span class="line"></span><br><span class="line">        <span class="built_in">NSLog</span>(<span class="string">@"come here"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>注意：主线程的运行循环是默认启动的，但是子线程的运行循环是默认不工作的，这样能够保证线程执行完毕后，自动被销毁</p>
+</blockquote>
+<ul>
+<li>停止运行循环</li>
+</ul>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- (<span class="keyword">IBAction</span>)stop &#123;</span><br><span class="line">    <span class="keyword">if</span> (_timerRf == <span class="literal">NULL</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">CFRunLoopStop</span>(_timerRf);</span><br><span class="line">    _timerRf = <span class="literal">NULL</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="RunLoop应用"><a href="#RunLoop应用" class="headerlink" title="RunLoop应用"></a>RunLoop应用</h2><ul>
+<li>NSTimer</li>
+<li>ImageView显示：控制方法在特定的模式下可用</li>
+<li>PerformSelector</li>
+<li>常驻线程：在子线程中开启一个runloop</li>
+<li>AutoreleasePool 自动释放池</li>
+<li>UI更新</li>
+</ul>
+<h3 id="PerformSelecter"><a href="#PerformSelecter" class="headerlink" title="PerformSelecter"></a>PerformSelecter</h3><ul>
+<li>performSelecter:afterDelay: 实际上其内部会创建一个 Timer 并添加到当前线程的 RunLoop 中</li>
+<li>performSelector:onThread: 实际上其会创建一个Timer加到对应的线程</li>
+</ul>
+<h3 id="UI更新"><a href="#UI更新" class="headerlink" title="UI更新"></a>UI更新</h3><p>当在操作 UI 时，比如改变了 Frame、更新了 UIView/CALayer 的层次时，或者手动调用了 UIView/CALayer 的 setNeedsLayout/setNeedsDisplay方法后，这个 UIView/CALayer 就被标记为待处理，并被提交到一个全局的容器去。</p>
+<p>苹果注册了一个 Observer 监听 BeforeWaiting(即将进入休眠) 和 Exit (即将退出Loop) 事件，回调去执行一个很长的函数：<br><code>_ZN2CA11Transaction17observer_callbackEP19__CFRunLoopObservermPv()</code>函数遍历所有待处理的 UIView/CAlayer 以执行实际的绘制和调整，并更新 UI 界面。</p>
+<h3 id="GCD和RunLoop的关系"><a href="#GCD和RunLoop的关系" class="headerlink" title="GCD和RunLoop的关系"></a>GCD和RunLoop的关系</h3><p>GCD 提供的某些接口也用到了 RunLoop， 例如 <code>dispatch_async()</code>。</p>
+<p>当调用 <code>dispatch_async(dispatch_get_main_queue(), block)</code> 时，libDispatch 会向主线程的 RunLoop 发送消息，RunLoop会被唤醒，并从消息中取得这个 block，并在回调 <code>__CFRUNLOOP_IS_SERVICING_THE_MAIN_DISPATCH_QUEUE__()</code> 里执行这个 block。但这个逻辑仅限于 dispatch 到主线程，dispatch 到其他线程仍然是由 libDispatch 处理的。。</p>
+<h3 id="更多RunLoop使用"><a href="#更多RunLoop使用" class="headerlink" title="更多RunLoop使用"></a>更多RunLoop使用</h3><p>利用Observer对RunLoop进行监视</p>
+<ul>
+<li>用perfromSelector在默认模式下设置图片，防止UITableView滚动卡顿</li>
+<li>UITableView+FDTemplateLayoutCell利用Observer在界面空闲状态下计算出UITableViewCell的高度并进行缓存</li>
+<li>PerformanceMonitor关于iOS实时卡顿监控</li>
+</ul>
+<h2 id="常见面试题"><a href="#常见面试题" class="headerlink" title="常见面试题"></a>常见面试题</h2><p>问题1：runloop是来做什么的？runloop和线程有什么关系？主线程默认开启了runloop么？子线程呢？</p>
+<p>runloop: 从字面意思看：运行循环、跑圈，其实它内部就是do-while循环，在这个循环内部不断地处理各种任务（比如Source、Timer、Observer）事件。runloop和线程的关系：一个线程对应一个RunLoop，主线程的RunLoop默认创建并启动，子线程的RunLoop需手动创建且手动启动（调用run方法）。RunLoop只能选择一个Mode启动，如果当前Mode中没有任何Source(Sources0、Sources1)、Timer，那么就直接退出RunLoop。</p>
+<p>问题4：苹果是如何实现Autorelease Pool的？</p>
+<p>解答： Autorelease Pool作用：缓存池，可以避免我们经常写relase的一种方式。其实就是延迟release，将创建的对象，添加到最近的autoreleasePool中，等到autoreleasePool作用域结束的时候，会将里面所有的对象的引用计数器 - autorelease.</p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+       
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/RunLoop/" rel="tag"><i class="fa fa-tag"></i> RunLoop</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/3358042383.html" rel="next" title="Hexo+Next主题优化">
+                <i class="fa fa-chevron-left"></i> Hexo+Next主题优化
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/1852943616.html" rel="prev" title="NSTimer">
+                NSTimer <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.png"
+                alt="liberty" />
+            
+              <p class="site-author-name" itemprop="name">liberty</p>
+              <p class="site-description motion-element" itemprop="description">每天进步一点点，坚持带来大改变!</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">11</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">6</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">11</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/liboy" title="GitHub &rarr; https://github.com/liboy" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Runloop"><span class="nav-number">1.</span> <span class="nav-text">Runloop</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#RunLoop对象"><span class="nav-number">1.1.</span> <span class="nav-text">RunLoop对象</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#获得RunLoop对象"><span class="nav-number">1.1.1.</span> <span class="nav-text">获得RunLoop对象</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#作用"><span class="nav-number">1.2.</span> <span class="nav-text">作用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Runloop-开启-amp-退出"><span class="nav-number">1.3.</span> <span class="nav-text">Runloop 开启&amp;退出</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Runloop和线程关系"><span class="nav-number">1.4.</span> <span class="nav-text">Runloop和线程关系</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#模拟-RunLoop-实现"><span class="nav-number">1.5.</span> <span class="nav-text">模拟 RunLoop 实现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#运行循环与时钟"><span class="nav-number">1.6.</span> <span class="nav-text">运行循环与时钟</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#RunLoop应用"><span class="nav-number">1.7.</span> <span class="nav-text">RunLoop应用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#PerformSelecter"><span class="nav-number">1.7.1.</span> <span class="nav-text">PerformSelecter</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#UI更新"><span class="nav-number">1.7.2.</span> <span class="nav-text">UI更新</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#GCD和RunLoop的关系"><span class="nav-number">1.7.3.</span> <span class="nav-text">GCD和RunLoop的关系</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#更多RunLoop使用"><span class="nav-number">1.7.4.</span> <span class="nav-text">更多RunLoop使用</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#常见面试题"><span class="nav-number">1.8.</span> <span class="nav-text">常见面试题</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2015 – <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">liberty</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+    <span title="站点总字数">71k</span>
+  
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    
+    <span title="站点阅读时长">1:05</span>
+  
+</div>
+
+
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.7.1</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v6.6.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+	
+    
+
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+      
+  
+  <script type="text/javascript" color='0,0,255' opacity='0.5' zIndex='-1' count='99' src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.6.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.6.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=6.6.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.6.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.6.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.6.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.6.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  
+  
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(function (item) {
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'pz9UFwS30zj3IhgRSN6DcfYo-gzGzoHsz',
+        appKey: '7qR2V4ql0FRryFx5NYSv67eN',
+        placeholder: '写下你的评论...',
+        avatar:'mm',
+        meta:guest,
+        pageSize:'10' || 10,
+        visitor: false
+    });
+  </script>
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+  
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

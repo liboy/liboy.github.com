@@ -145,29 +145,30 @@
 
 
 
-  <meta name="description" content="Git简介Git和其他版本控制系统如SVN的一个不同之处就是有暂存区的概念。 术语解释 Workspace：工作区 Index/Stage：暂存区，也叫索引">
-<meta name="keywords" content="Git,总结">
+  <meta name="description" content="RunLoop内部实现内部逻辑根据苹果在文档里的说明，RunLoop 内部的逻辑大致如下:  RunLoop的事件队列,官方描述看这里   通知观察者run loop已经启动   通知观察者任何即将要开始的定时器 通知观察者任何即将启动的非基于端口的源 启动任何准备好的非基于端口的源 如果基于端口的源准备好并处于等待状态，立即启动；并进入步骤9。 通知观察者线程进入休眠 将线程置于休眠直到任一下面">
+<meta name="keywords" content="RunLoop">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Git学习笔记">
-<meta property="og:url" content="http://liboy.site/2837359220.html">
+<meta property="og:title" content="RunLoop内部实现">
+<meta property="og:url" content="http://liboy.site/1981037120.html">
 <meta property="og:site_name" content="liberty&#39;s Blog">
-<meta property="og:description" content="Git简介Git和其他版本控制系统如SVN的一个不同之处就是有暂存区的概念。 术语解释 Workspace：工作区 Index/Stage：暂存区，也叫索引">
+<meta property="og:description" content="RunLoop内部实现内部逻辑根据苹果在文档里的说明，RunLoop 内部的逻辑大致如下:  RunLoop的事件队列,官方描述看这里   通知观察者run loop已经启动   通知观察者任何即将要开始的定时器 通知观察者任何即将启动的非基于端口的源 启动任何准备好的非基于端口的源 如果基于端口的源准备好并处于等待状态，立即启动；并进入步骤9。 通知观察者线程进入休眠 将线程置于休眠直到任一下面">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://www.yiibai.com/uploads/images/201707/1207/683090701_88630.jpg">
-<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tNc79ly1g2bp9i3vtaj30cq06i0tc.jpg">
-<meta property="og:image" content="http://www.yiibai.com/uploads/images/201707/0607/744160702_48164.png">
-<meta property="og:updated_time" content="2019-04-22T13:24:03.016Z">
+<meta property="og:image" content="https://ws3.sinaimg.cn/large/006tNc79ly1g2bql5ppdrj30hz0dun06.jpg">
+<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tNc79ly1g2bql66rcsj30u00ul0xx.jpg">
+<meta property="og:image" content="https://ws3.sinaimg.cn/large/006tNc79ly1g2bql73mjlj30ni0bct9b.jpg">
+<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tNc79ly1g2bql7ymgfj306j05ejrf.jpg">
+<meta property="og:updated_time" content="2019-04-22T14:57:11.610Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Git学习笔记">
-<meta name="twitter:description" content="Git简介Git和其他版本控制系统如SVN的一个不同之处就是有暂存区的概念。 术语解释 Workspace：工作区 Index/Stage：暂存区，也叫索引">
-<meta name="twitter:image" content="http://www.yiibai.com/uploads/images/201707/1207/683090701_88630.jpg">
+<meta name="twitter:title" content="RunLoop内部实现">
+<meta name="twitter:description" content="RunLoop内部实现内部逻辑根据苹果在文档里的说明，RunLoop 内部的逻辑大致如下:  RunLoop的事件队列,官方描述看这里   通知观察者run loop已经启动   通知观察者任何即将要开始的定时器 通知观察者任何即将启动的非基于端口的源 启动任何准备好的非基于端口的源 如果基于端口的源准备好并处于等待状态，立即启动；并进入步骤9。 通知观察者线程进入休眠 将线程置于休眠直到任一下面">
+<meta name="twitter:image" content="https://ws3.sinaimg.cn/large/006tNc79ly1g2bql5ppdrj30hz0dun06.jpg">
 
 
 
 
 
 
-  <link rel="canonical" href="http://liboy.site/2837359220.html"/>
+  <link rel="canonical" href="http://liboy.site/1981037120.html"/>
 
 
 
@@ -177,7 +178,7 @@
   };
 </script>
 
-  <title>Git学习笔记 | liberty's Blog</title>
+  <title>RunLoop内部实现 | liberty's Blog</title>
   
 
 
@@ -428,7 +429,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://liboy.site/2837359220.html">
+    <link itemprop="mainEntityOfPage" href="http://liboy.site/1981037120.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="liberty">
@@ -445,7 +446,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Git学习笔记
+          <h1 class="post-title" itemprop="name headline">RunLoop内部实现
               
             
           </h1>
@@ -470,7 +471,7 @@
                 
               
 
-              <time title="创建时间：2019-01-06 12:28:53" itemprop="dateCreated datePublished" datetime="2019-01-06T12:28:53+08:00">2019-01-06</time>
+              <time title="创建时间：2017-11-07 15:00:38" itemprop="dateCreated datePublished" datetime="2017-11-07T15:00:38+08:00">2017-11-07</time>
             
 
             
@@ -487,7 +488,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-04-22 21:24:03" itemprop="dateModified" datetime="2019-04-22T21:24:03+08:00">2019-04-22</time>
+                <time title="修改时间：2019-04-22 22:57:11" itemprop="dateModified" datetime="2019-04-22T22:57:11+08:00">2019-04-22</time>
               
             
           </span>
@@ -504,14 +505,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Git/" itemprop="url" rel="index"><span itemprop="name">Git</span></a></span>
-
-                
-                
-                  ，
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Git/Git学习/" itemprop="url" rel="index"><span itemprop="name">Git学习</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/RunLoop/" itemprop="url" rel="index"><span itemprop="name">RunLoop</span></a></span>
 
                 
                 
@@ -526,8 +520,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2837359220.html#comments" itemprop="discussionUrl">
-                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2837359220.html" itemprop="commentCount"></span>
+                <a href="/1981037120.html#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/1981037120.html" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -549,7 +543,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">4.9k</span>
+                <span title="本文字数">6.3k</span>
               
 
               
@@ -563,7 +557,7 @@
                 
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
-                <span title="阅读时长">4 分钟</span>
+                <span title="阅读时长">6 分钟</span>
               
             </div>
           
@@ -583,93 +577,56 @@
       
 
       
-        <h2 id="Git简介"><a href="#Git简介" class="headerlink" title="Git简介"></a>Git简介</h2><p>Git和其他版本控制系统如SVN的一个不同之处就是有暂存区的概念。</p>
-<h3 id="术语解释"><a href="#术语解释" class="headerlink" title="术语解释"></a>术语解释</h3><p><img src="http://www.yiibai.com/uploads/images/201707/1207/683090701_88630.jpg" alt=""></p>
-<p><strong>Workspace</strong>：工作区</p>
-<p><strong>Index/Stage</strong>：暂存区，也叫索引<br><a id="more"></a></p>
-<p><strong>Repository</strong>：仓库区（或版本库）</p>
-<p><strong>Remote</strong>：远程仓库</p>
-<ul>
-<li><strong>工作区</strong>: 通过<code>git init</code>创建的代码库的所有文件但是不包括.git文件(版本库)</li>
-<li><strong>版本库</strong>（Repository）<br>工作区有一个隐藏目录.git，这个不算工作区，而是Git的版本库。</li>
-<li><strong>暂存区</strong>: 通过 <code>git add</code> 添加的修改,都是进入到暂存区,肉眼不可见 通过 <code>git status</code> 可以看到修改的状态。</li>
-</ul>
-<p>还有Git为自动创建的第一个分支<code>master</code>，以及指向master的一个指针叫<code>HEAD</code>。</p>
-<h3 id="工作原理"><a href="#工作原理" class="headerlink" title="工作原理"></a>工作原理</h3><p><img src="https://ws2.sinaimg.cn/large/006tNc79ly1g2bp9i3vtaj30cq06i0tc.jpg" alt=""><br>文件往Git版本库里添加的时候，是分两步执行的：</p>
-<ul>
-<li><p>第一步是用<code>git add</code>把文件添加进去，实际上就是把文件修改添加到暂存区；</p>
-</li>
-<li><p>第二步是用<code>git commit</code>提交更改，实际上就是把暂存区的所有内容提交到当前分支。</p>
-</li>
-</ul>
-<h3 id="三种状态"><a href="#三种状态" class="headerlink" title="三种状态"></a>三种状态</h3><p>Git 有三种状态，你的文件可能处于其中之一：已提交(committed)、已修改(modified)和已暂存(staged)。 已提交表示数据已经安全的保存在本地数据库中。 已修改表示修改了文件，但还没保存到数据库中。 已暂存表示对一个已修改文件的当前版本做了标记，使之包含在下次提交的快照中。</p>
-<p>由此引入 Git 项目的三个工作区域的概念：Git 仓库、工作目录以及暂存区域。工作目录、暂存区域以及 Git 仓库如下图所示<br><img src="http://www.yiibai.com/uploads/images/201707/0607/744160702_48164.png" alt=""></p>
-<p>Git 仓库目录是 Git 用来保存项目的元数据和对象数据库的地方。 这是 Git 中最重要的部分，从其它计算机克隆仓库时，拷贝的就是这里的数据。</p>
-<p>工作目录是对项目的某个版本独立提取出来的内容。 这些从 Git 仓库的压缩数据库中提取出来的文件，放在磁盘上供你使用或修改。</p>
-<p>暂存区域是一个文件，保存了下次将提交的文件列表信息，一般在 Git 仓库目录中。 有时候也被称作‘索引’，不过一般说法还是叫暂存区域。</p>
-<h3 id="用户信息"><a href="#用户信息" class="headerlink" title="用户信息"></a>用户信息</h3><p>安装完成后，还需要最后一步设置，在命令行输入：<br><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git<span class="built_in"> config </span>--global user.name <span class="string">"Your Name"</span></span><br><span class="line">$ git<span class="built_in"> config </span>--global user.email <span class="string">"email@example.com"</span></span><br></pre></td></tr></table></figure></p>
+        <h1 id="RunLoop内部实现"><a href="#RunLoop内部实现" class="headerlink" title="RunLoop内部实现"></a>RunLoop内部实现</h1><h2 id="内部逻辑"><a href="#内部逻辑" class="headerlink" title="内部逻辑"></a>内部逻辑</h2><p>根据苹果在文档里的说明，RunLoop 内部的逻辑大致如下:</p>
+<p><img src="https://ws3.sinaimg.cn/large/006tNc79ly1g2bql5ppdrj30hz0dun06.jpg" alt=""></p>
+<p>RunLoop的事件队列,官方描述<a href="https://developer.apple.com/library/content/documentation/Cocoa/Conceptual/Multithreading/RunLoopManagement/RunLoopManagement.html#//apple_ref/doc/uid/10000057i-CH16-SW23" target="_blank" rel="noopener">看这里</a></p>
 <blockquote>
-<p>注意: git config命令的–global参数，用了这个参数，表示你这台机器上所有的Git仓库都会使用这个配置，当然也可以对某个仓库指定不同的用户名和Email地址。</p>
-</blockquote>
-<h3 id="检查配置信息"><a href="#检查配置信息" class="headerlink" title="检查配置信息"></a>检查配置信息</h3><p>如果想要检查你的配置，可以使用 <code>git config --list</code> 命令来列出所有 Git 当时能找到的配置。</p>
-<h3 id="常用基础命令"><a href="#常用基础命令" class="headerlink" title="常用基础命令"></a>常用基础命令</h3><ul>
-<li>初始化一个Git仓库，使用<code>git init</code>命令。<br>出现隐藏.git目录，用<code>ls -ah</code>命令就可以看见。</li>
-<li>添加文件到Git仓库，分两步：<ul>
-<li>使用命令<code>git add &lt;file&gt;</code>，注意，可反复多次使用，添加多个文件；</li>
-<li>使用命令<code>git commit -m &lt;message&gt;</code>提交。</li>
+<ol>
+<li>通知观察者run loop已经启动</li>
+</ol>
+<ul>
+<li>通知观察者任何即将要开始的定时器</li>
+<li>通知观察者任何即将启动的非基于端口的源</li>
+<li>启动任何准备好的非基于端口的源</li>
+<li>如果基于端口的源准备好并处于等待状态，立即启动；并进入步骤9。</li>
+<li>通知观察者线程进入休眠</li>
+<li>将线程置于休眠直到任一下面的事件发生：<ul>
+<li>某一事件到达基于端口的源</li>
+<li>定时器启动</li>
+<li>Run loop设置的时间已经超时</li>
+<li>run loop被显式唤醒</li>
 </ul>
 </li>
-<li>要查看哪些文件处于什么状态，可以用 <code>git status</code> 命令。</li>
+<li>通知观察者线程将被唤醒。</li>
+<li>处理未处理的事件<ul>
+<li>如果用户定义的定时器启动，处理定时器事件并重启run loop。进入步骤2</li>
+<li>如果输入源启动，传递相应的消息</li>
+<li>如果run loop被显式唤醒而且时间还没超时，重启run loop。进入步骤2</li>
 </ul>
-<h4 id="忽略文件"><a href="#忽略文件" class="headerlink" title="忽略文件"></a>忽略文件</h4><p>总会有些文件无需纳入 Git 的管理，也不希望它们总出现在未跟踪文件列表。我们可以创建一个名为 <code>.gitignore</code> 的文件，列出要忽略的文件模式。</p>
-<p><code>.gitignore</code> 的格式规范如下：</p>
-<ul>
-<li>所有空行或者以 <code>＃</code> 开头的行都会被 Git 忽略。</li>
-<li>可以使用标准的 <code>glob</code> 模式匹配。</li>
-<li>匹配模式可以以(<code>/</code>)开头防止递归。</li>
-<li>匹配模式可以以(<code>/</code>)结尾指定目录。</li>
-<li>要忽略指定模式以外的文件或目录，可以在模式前加上惊叹号(<code>!</code>)取反。</li>
+</li>
+<li>通知观察者run loop结束。</li>
 </ul>
-<p>所谓的 <code>glob</code> 模式是指 <code>shell</code> 所使用的简化了的正则表达式。</p>
-<blockquote>
-<p>提示：GitHub 有一个十分详细的针对数十种项目及编程语言的 .gitignore 文件列表，你可以在 <a href="http://github.com/github/gitignore" target="_blank" rel="noopener">http://github.com/github/gitignore</a> 找到它。</p>
 </blockquote>
-<h4 id="查看已暂存和未暂存的修改"><a href="#查看已暂存和未暂存的修改" class="headerlink" title="查看已暂存和未暂存的修改"></a>查看已暂存和未暂存的修改</h4><p>如果 <code>git status</code> 命令的输出对于你来说过于模糊，你想知道具体修改了什么地方，可以用 <code>git diff</code> 命令。</p>
-<p>请注意，<code>git diff</code> 本身只显示尚未暂存的改动，而不是自上次提交以来所做的所有改动。 所以有时候你一下子暂存了所有更新过的文件后，运行 git diff 后却什么也没有，就是这个原因。</p>
-<p>然后用 <code>git diff --cached</code> 查看已经暂存起来的变化：(<code>--staged</code> 和 <code>--cached</code> 是同义词)</p>
-<h4 id="跳过使用暂存区域"><a href="#跳过使用暂存区域" class="headerlink" title="跳过使用暂存区域"></a>跳过使用暂存区域</h4><p>Git 提供了一个跳过使用暂存区域的方式， 只要在提交的时候，给 <code>git commit</code> 加上 <code>-a</code> 选项，Git 就会自动把所有已经跟踪过的文件暂存起来一并提交，从而跳过 <code>git add</code> 步骤。</p>
-<h4 id="移除文件"><a href="#移除文件" class="headerlink" title="移除文件"></a>移除文件</h4><p> <code>git rm</code> 移除已跟踪文件（同时会删除工作目录中的文件）。<br> 如果删除之前修改过并且已经放到暂存区域的话，则必须要用强制删除选项 <code>-f</code>(注：即 <code>force</code> 的首字母)。 这是一种安全特性，用于防止误删还没有添加到快照的数据，这样的数据不能被 Git 恢复。</p>
-<p>另外一种情况是，想让文件保留在磁盘，但是并不想让 Git 继续跟踪。 当你忘记添加 <code>.gitignore</code> 文件，不小心把一个很大的日志文件或一堆 <code>.a</code> 这样的编译生成文件添加到暂存区时，可以使用 <code>--cached</code> 选项：<br><figure class="highlight vhdl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">$ git rm <span class="comment">--cached mytext.txt</span></span><br><span class="line">$ git status</span><br><span class="line"><span class="keyword">On</span> branch master</span><br><span class="line">Your branch <span class="keyword">is</span> ahead <span class="keyword">of</span> <span class="symbol">'origin</span>/master' by <span class="number">1</span> commit.</span><br><span class="line">  (<span class="keyword">use</span> <span class="string">"git push"</span> <span class="keyword">to</span> publish your local commits)</span><br><span class="line"></span><br><span class="line">Changes <span class="keyword">to</span> be committed:</span><br><span class="line">  (<span class="keyword">use</span> <span class="string">"git reset HEAD &lt;file&gt;..."</span> <span class="keyword">to</span> unstage)</span><br><span class="line"></span><br><span class="line">        deleted:    mytext.txt</span><br></pre></td></tr></table></figure></p>
-<p><code>git rm</code> 命令后面可以列出文件或者目录的名字，也可以使用 glob 模式。</p>
-<h4 id="移动文件"><a href="#移动文件" class="headerlink" title="移动文件"></a>移动文件</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> git mv file_from file_to</span></span><br></pre></td></tr></table></figure>
-<h4 id="查看提交历史"><a href="#查看提交历史" class="headerlink" title="查看提交历史"></a>查看提交历史</h4><p>默认不用任何参数的话，<code>git log</code> 会按提交时间列出所有的更新，最近的更新排在最上面。<br>显示最近两次提交内容差异：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> git <span class="built_in">log</span> -p -2</span></span><br></pre></td></tr></table></figure></p>
-<p>每次提交的简略的统计信息：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> git <span class="built_in">log</span> --<span class="built_in">stat</span></span></span><br></pre></td></tr></table></figure></p>
-<p>常用选项 <code>--pretty</code> 。 这个选项可以指定使用不同于默认格式的方式展示提交历史。 这个选项有一些内建的子选项供你使用。 </p>
+<p>其内部代码整理如下 ：<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/// 用DefaultMode启动</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">CFRunLoopRun</span><span class="params">(<span class="keyword">void</span>)</span> </span>&#123;</span><br><span class="line">    CFRunLoopRunSpecific(CFRunLoopGetCurrent(), kCFRunLoopDefaultMode, <span class="number">1.0e10</span>, <span class="literal">false</span>);</span><br><span class="line">&#125;</span><br><span class="line">  </span><br><span class="line"><span class="comment">/// 用指定的Mode启动，允许设置RunLoop超时时间</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">CFRunLoopRunInMode</span><span class="params">(CFStringRef modeName, CFTimeInterval seconds, Boolean stopAfterHandle)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> CFRunLoopRunSpecific(CFRunLoopGetCurrent(), modeName, seconds, returnAfterSourceHandled);</span><br><span class="line">&#125;</span><br><span class="line">  </span><br><span class="line"><span class="comment">/// RunLoop的实现</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">CFRunLoopRunSpecific</span><span class="params">(runloop, modeName, seconds, stopAfterHandle)</span> </span>&#123;</span><br><span class="line">     </span><br><span class="line">    <span class="comment">/// 首先根据modeName找到对应mode</span></span><br><span class="line">    CFRunLoopModeRef currentMode = __CFRunLoopFindMode(runloop, modeName, <span class="literal">false</span>);</span><br><span class="line">    <span class="comment">/// 如果mode里没有source/timer/observer, 直接返回。</span></span><br><span class="line">    <span class="keyword">if</span> (__CFRunLoopModeIsEmpty(currentMode)) <span class="keyword">return</span>;</span><br><span class="line">     </span><br><span class="line">    <span class="comment">/// 1. 通知 Observers: RunLoop 即将进入 loop。</span></span><br><span class="line">    __CFRunLoopDoObservers(runloop, currentMode, kCFRunLoopEntry);</span><br><span class="line">     </span><br><span class="line">    <span class="comment">/// 内部函数，进入loop</span></span><br><span class="line">    __CFRunLoopRun(runloop, currentMode, seconds, returnAfterSourceHandled) &#123;</span><br><span class="line">         </span><br><span class="line">        Boolean sourceHandledThisLoop = NO;</span><br><span class="line">        <span class="keyword">int</span> retVal = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">do</span> &#123;</span><br><span class="line">  </span><br><span class="line">            <span class="comment">/// 2. 通知 Observers: RunLoop 即将触发 Timer 回调。</span></span><br><span class="line">            __CFRunLoopDoObservers(runloop, currentMode, kCFRunLoopBeforeTimers);</span><br><span class="line">            <span class="comment">/// 3. 通知 Observers: RunLoop 即将触发 Source0 (非port) 回调。</span></span><br><span class="line">            __CFRunLoopDoObservers(runloop, currentMode, kCFRunLoopBeforeSources);</span><br><span class="line">            <span class="comment">/// 执行被加入的block</span></span><br><span class="line">            __CFRunLoopDoBlocks(runloop, currentMode);</span><br><span class="line">             </span><br><span class="line">            <span class="comment">/// 4. RunLoop 触发 Source0 (非port) 回调。</span></span><br><span class="line">            sourceHandledThisLoop = __CFRunLoopDoSources0(runloop, currentMode, stopAfterHandle);</span><br><span class="line">            <span class="comment">/// 执行被加入的block</span></span><br><span class="line">            __CFRunLoopDoBlocks(runloop, currentMode);</span><br><span class="line">  </span><br><span class="line">            <span class="comment">/// 5. 如果有 Source1 (基于port) 处于 ready 状态，直接处理这个 Source1 然后跳转去处理消息。</span></span><br><span class="line">            <span class="keyword">if</span> (__Source0DidDispatchPortLastTime) &#123;</span><br><span class="line">                Boolean hasMsg = __CFRunLoopServiceMachPort(dispatchPort, &amp;msg)</span><br><span class="line">                <span class="keyword">if</span> (hasMsg) <span class="keyword">goto</span> handle_msg;</span><br><span class="line">            &#125;</span><br><span class="line">             </span><br><span class="line">            <span class="comment">/// 通知 Observers: RunLoop 的线程即将进入休眠(sleep)。</span></span><br><span class="line">            <span class="keyword">if</span> (!sourceHandledThisLoop) &#123;</span><br><span class="line">                __CFRunLoopDoObservers(runloop, currentMode, kCFRunLoopBeforeWaiting);</span><br><span class="line">            &#125;</span><br><span class="line">             </span><br><span class="line">            <span class="comment">/// 7. 调用 mach_msg 等待接受 mach_port 的消息。线程将进入休眠, 直到被下面某一个事件唤醒。</span></span><br><span class="line">            <span class="comment">///  一个基于 port 的Source 的事件。</span></span><br><span class="line">            <span class="comment">///  一个 Timer 到时间了</span></span><br><span class="line">            <span class="comment">///  RunLoop 自身的超时时间到了</span></span><br><span class="line">            <span class="comment">///  被其他什么调用者手动唤醒</span></span><br><span class="line">            __CFRunLoopServiceMachPort(waitSet, &amp;msg, <span class="keyword">sizeof</span>(msg_buffer), &amp;livePort) &#123;</span><br><span class="line">                mach_msg(msg, MACH_RCV_MSG, port); <span class="comment">// thread wait for receive msg</span></span><br><span class="line">            &#125;</span><br><span class="line">  </span><br><span class="line">            <span class="comment">/// 8. 通知 Observers: RunLoop 的线程刚刚被唤醒了。</span></span><br><span class="line">            __CFRunLoopDoObservers(runloop, currentMode, kCFRunLoopAfterWaiting);</span><br><span class="line">             </span><br><span class="line">            <span class="comment">/// 收到消息，处理消息。</span></span><br><span class="line">            handle_msg:</span><br><span class="line">  </span><br><span class="line">            <span class="comment">/// 9.1 如果一个 Timer 到时间了，触发这个Timer的回调。</span></span><br><span class="line">            <span class="keyword">if</span> (msg_is_timer) &#123;</span><br><span class="line">                __CFRunLoopDoTimers(runloop, currentMode, mach_absolute_time())</span><br><span class="line">            &#125; </span><br><span class="line">  </span><br><span class="line">            <span class="comment">/// 9.2 如果有dispatch到main_queue的block，执行block。</span></span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (msg_is_dispatch) &#123;</span><br><span class="line">                __CFRUNLOOP_IS_SERVICING_THE_MAIN_DISPATCH_QUEUE__(msg);</span><br><span class="line">            &#125; </span><br><span class="line">  </span><br><span class="line">            <span class="comment">/// 9.3 如果一个 Source1 (基于port) 发出事件了，处理这个事件</span></span><br><span class="line">            <span class="keyword">else</span> &#123;</span><br><span class="line">                CFRunLoopSourceRef source1 = __CFRunLoopModeFindSourceForMachPort(runloop, currentMode, livePort);</span><br><span class="line">                sourceHandledThisLoop = __CFRunLoopDoSource1(runloop, currentMode, source1, msg);</span><br><span class="line">                <span class="keyword">if</span> (sourceHandledThisLoop) &#123;</span><br><span class="line">                    mach_msg(reply, MACH_SEND_MSG, reply);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">             </span><br><span class="line">            <span class="comment">/// 执行加入到Loop的block</span></span><br><span class="line">            __CFRunLoopDoBlocks(runloop, currentMode);</span><br><span class="line">             </span><br><span class="line">  </span><br><span class="line">            <span class="keyword">if</span> (sourceHandledThisLoop &amp;&amp; stopAfterHandle) &#123;</span><br><span class="line">                <span class="comment">/// 进入loop时参数说处理完事件就返回。</span></span><br><span class="line">                retVal = kCFRunLoopRunHandledSource;</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (timeout) &#123;</span><br><span class="line">                <span class="comment">/// 超出传入参数标记的超时时间了</span></span><br><span class="line">                retVal = kCFRunLoopRunTimedOut;</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (__CFRunLoopIsStopped(runloop)) &#123;</span><br><span class="line">                <span class="comment">/// 被外部调用者强制停止了</span></span><br><span class="line">                retVal = kCFRunLoopRunStopped;</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (__CFRunLoopModeIsEmpty(runloop, currentMode)) &#123;</span><br><span class="line">                <span class="comment">/// source/timer/observer一个都没有了</span></span><br><span class="line">                retVal = kCFRunLoopRunFinished;</span><br><span class="line">            &#125;</span><br><span class="line">             </span><br><span class="line">            <span class="comment">/// 如果没超时，mode里没空，loop也没被停止，那继续loop。</span></span><br><span class="line">        &#125; <span class="keyword">while</span> (retVal == <span class="number">0</span>);</span><br><span class="line">    &#125;</span><br><span class="line">     </span><br><span class="line">    <span class="comment">/// 10. 通知 Observers: RunLoop 即将退出。</span></span><br><span class="line">    __CFRunLoopDoObservers(rl, currentMode, kCFRunLoopExit);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>可以看到，实际上 RunLoop 就是这样一个函数，其内部是一个 do-while 循环。当你调用 CFRunLoopRun() 时，线程就会一直停留在这个循环里；直到超时或被手动停止，该函数才会返回。</p>
+<p>这张图更详细描述了上面Runloop的核心流程：<br><img src="https://ws2.sinaimg.cn/large/006tNc79ly1g2bql66rcsj30u00ul0xx.jpg" alt=""></p>
+<blockquote>
+<p>注意：</p>
 <ul>
-<li><code>oneline</code> 将每个提交放在一行显示，查看的提交数很大时非常有用。 </li>
-<li><code>short</code> ，<code>full</code> 和 <code>fuller</code> 可以用，展示的信息或多或少有些不同。</li>
+<li>是_黄色_区域的消息处理中并不包含source0，因为它在循环开始之初就会处理</li>
+<li>CFRunLoopPerformBlock尽管在上图中作为唤醒机制有所体现，但事实上执行只是入队，等待下次RunLoop运行才会执行，而如果需要立即执行则必须调用CFRunLoopWakeUp。</li>
 </ul>
-<figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git <span class="built_in">log</span> <span class="comment">--pretty=oneline</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ git <span class="built_in">log</span> <span class="comment">--pretty=format:"%h - %an, %ar : %s"</span></span><br><span class="line">ca82a6d - Scott Chacon, <span class="number">6</span> years ago : changed <span class="keyword">the</span> <span class="built_in">version</span> <span class="built_in">number</span></span><br><span class="line"><span class="number">085</span>bb3b - Scott Chacon, <span class="number">6</span> years ago : removed unnecessary test</span><br><span class="line">a11bef0 - Scott Chacon, <span class="number">6</span> years ago : <span class="keyword">first</span> commit</span><br></pre></td></tr></table></figure>
-<h4 id="撤消操作"><a href="#撤消操作" class="headerlink" title="撤消操作"></a>撤消操作</h4><p>有时候我们提交完了才发现漏掉了几个文件没有添加，或者提交信息写错了，可以运行带有 <code>--amend</code> 选项的提交命令尝试重新提交：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> git commit --amend</span></span><br></pre></td></tr></table></figure></p>
-<p>这个命令会将暂存区中的文件提交。 如果自上次提交以来你还未做任何修改(例如，在上次提交后马上执行了此命令)，那么快照会保持不变，而你所修改的只是提交信息。</p>
-<p>例如，提交后发现忘记了暂存某些需要的修改，可以像下面这样操作：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> git commit -m <span class="string">'initial commit'</span></span></span><br><span class="line"><span class="meta">$</span><span class="bash"> git add forgotten_file</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> git commit --amend</span></span><br></pre></td></tr></table></figure></p>
-<p>最终你只会有一个提交 - 第二次提交将代替第一次提交的结果。</p>
-<h4 id="取消暂存的文件"><a href="#取消暂存的文件" class="headerlink" title="取消暂存的文件"></a>取消暂存的文件</h4><p><code>reset</code> 后面不跟参数就是取消所有。<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="keyword">reset</span> <span class="keyword">HEAD</span> mytext.txt</span><br></pre></td></tr></table></figure></p>
-<h4 id="撤消对文件的修改"><a href="#撤消对文件的修改" class="headerlink" title="撤消对文件的修改"></a>撤消对文件的修改</h4><figure class="highlight vhdl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">git status</span><br><span class="line"><span class="keyword">On</span> branch master</span><br><span class="line">Your branch <span class="keyword">is</span> up-<span class="keyword">to</span>-date <span class="keyword">with</span> <span class="symbol">'origin</span>/master'.</span><br><span class="line"></span><br><span class="line">Changes <span class="keyword">to</span> be committed:</span><br><span class="line">  (<span class="keyword">use</span> <span class="string">"git reset HEAD &lt;file&gt;..."</span> <span class="keyword">to</span> unstage)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">new</span> <span class="keyword">file</span>:   <span class="number">123</span></span><br><span class="line"></span><br><span class="line">Changes <span class="keyword">not</span> staged <span class="keyword">for</span> commit:</span><br><span class="line">  (<span class="keyword">use</span> <span class="string">"git add &lt;file&gt;..."</span> <span class="keyword">to</span> update what will be committed)</span><br><span class="line">  (<span class="keyword">use</span> <span class="string">"git checkout -- &lt;file&gt;..."</span> <span class="keyword">to</span> discard changes <span class="keyword">in</span> working directory)</span><br><span class="line"></span><br><span class="line">        modified:   <span class="number">123</span></span><br></pre></td></tr></table></figure>
-<p>按照说明输入命令撤销<br><figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout <span class="comment">-- 123</span></span><br></pre></td></tr></table></figure></p>
-<h4 id="隐藏-Stash-操作"><a href="#隐藏-Stash-操作" class="headerlink" title="隐藏(Stash)操作"></a>隐藏(Stash)操作</h4><p>要切换任务做其他的，但不想提交一直在做的工作; 那么可以把当前工作的改变隐藏起来。 要将一个新的存根推到堆栈上，运行 <code>git stash</code> 命令。通过使用 <code>git stash list</code> 命令来查看已存在更改的列表。执行 <code>git stash pop</code> 命令即可从堆栈中删除更改并将其放置在当前工作目录中。</p>
-<p><strong>查看远程仓库</strong></p>
-<p>如果想查看你已经配置的远程仓库服务器，可以运行 <code>git remote</code> 命令。 它会列出你指定的每一个远程服务器的简写。</p>
-<p>指定选项 <code>-v</code>，会显示需要读写远程仓库使用的 Git 保存的简写与其对应的 URL。</p>
-<h4 id="添加远程仓库"><a href="#添加远程仓库" class="headerlink" title="添加远程仓库"></a>添加远程仓库</h4><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote <span class="built_in">add</span> <span class="symbol">&lt;shortname&gt;</span> <span class="symbol">&lt;url&gt;</span></span><br></pre></td></tr></table></figure>
-<h4 id="从远程仓库中抓取与拉取"><a href="#从远程仓库中抓取与拉取" class="headerlink" title="从远程仓库中抓取与拉取"></a>从远程仓库中抓取与拉取</h4><figure class="highlight accesslog"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git fetch <span class="string">[remote-name]</span></span><br></pre></td></tr></table></figure>
-<p>这个命令会访问远程仓库，从中拉取所有还没有的数据。执行完成后，将会拥有那个远程仓库中所有分支的引用，可以随时合并或查看。</p>
-<p>如果使用 <code>clone</code> 命令克隆了一个仓库，命令会自动将其添加为远程仓库并默认以 “origin” 为简写。 所以，<code>git fetch origin</code> 会抓取克隆(或上一次抓取)后新推送的所有工作。 必须注意 <code>git fetch</code> 命令会将数据拉取到本地仓库, 它并不会自动合并或修改当前的工作。<br>如果你有一个分支设置为跟踪一个远程分支，可以使用 <code>git pull</code> 命令来自动的抓取然后合并远程分支到当前分支。 这对你来说可能是一个更简单或更舒服的工作流程；默认情况下，<code>git clone</code> 命令会自动设置本地 master 分支跟踪克隆的远程仓库的 <code>master</code> 分支(或不管是什么名字的默认分支)。 运行 <code>git pull</code> 通常会从最初克隆的服务器上抓取数据并自动尝试合并到当前所在的分支。</p>
-<h4 id="推送到远程仓库"><a href="#推送到远程仓库" class="headerlink" title="推送到远程仓库"></a>推送到远程仓库</h4><p>推送命令： <code>git push [remote-name] [branch-name]</code> 。<br><figure class="highlight maxima"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git <span class="built_in">push</span> <span class="built_in">origin</span> master</span><br></pre></td></tr></table></figure></p>
-<h4 id="查看远程仓库"><a href="#查看远程仓库" class="headerlink" title="查看远程仓库"></a>查看远程仓库</h4><p>查看远程仓库的更多信息：  <code>remote show [remote-name]</code> 。<br><figure class="highlight maxima"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git remote <span class="built_in">show</span> <span class="built_in">origin</span></span><br></pre></td></tr></table></figure></p>
-<h4 id="远程仓库的移除与重命名"><a href="#远程仓库的移除与重命名" class="headerlink" title="远程仓库的移除与重命名"></a>远程仓库的移除与重命名</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git remote <span class="keyword">rename</span> <span class="keyword">old</span> <span class="keyword">new</span></span><br></pre></td></tr></table></figure>
-<p>更多详细命令请参考<br><a href="https://git-scm.com/book/zh/v2" target="_blank" rel="noopener">https://git-scm.com/book/zh/v2</a><br><a href="http://www.yiibai.com/git/" target="_blank" rel="noopener">http://www.yiibai.com/git/</a></p>
+</blockquote>
+<h2 id="底层实现"><a href="#底层实现" class="headerlink" title="底层实现"></a>底层实现</h2><p>从上面代码第7步可以看到，RunLoop 的核心是基于 mach port 的，其进入休眠时调用的函数是 <code>mach_msg()</code>。</p>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/// 7. 调用 mach_msg 等待接受 mach_port 的消息。线程将进入休眠, 直到被下面某一个事件唤醒。</span></span><br><span class="line"><span class="comment">///  一个基于 port 的Source 的事件。</span></span><br><span class="line"><span class="comment">///  一个 Timer 到时间了</span></span><br><span class="line"><span class="comment">///  RunLoop 自身的超时时间到了</span></span><br><span class="line"><span class="comment">///  被其他什么调用者手动唤醒</span></span><br><span class="line"><span class="selector-tag">__CFRunLoopServiceMachPort</span>(waitSet, &amp;msg, sizeof(msg_buffer), &amp;livePort) &#123;</span><br><span class="line">    <span class="selector-tag">mach_msg</span>(msg, MACH_RCV_MSG, port); <span class="comment">// thread wait for receive msg</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="https://ws3.sinaimg.cn/large/006tNc79ly1g2bql73mjlj30ni0bct9b.jpg" alt="OSX/iOS 这个核心的架构"></p>
+<ul>
+<li><p>Mach 是 Darwin 的核心，可以说是内核的核心，提供了进程间通信（IPC）、处理器调度等基础服务。在 Mach 中，进程、线程间的通信是以消息的方式来完成的，消息在两个 Port 之间进行传递（这也正是 Source1 之所以称之为 Port-based Source 的原因，因为它就是依靠系统发送消息到指定的Port来触发的）。消息的发送和接收使用&lt;mach/message.h&gt;中的mach_msg()函数</p>
+</li>
+<li><p>为了实现消息的发送和接收，<code>mach_msg()</code> 函数实际上是调用了一个 Mach 陷阱 (trap)，即函数<code>mach_msg_trap()</code>，陷阱这个概念在 Mach 中等同于系统调用。当你在用户态调用 <code>mach_msg_trap()</code> 时会触发陷阱机制，切换到内核态；内核态中内核实现的 mach_msg() 函数会完成实际的工作，如下图：<br><img src="https://ws2.sinaimg.cn/large/006tNc79ly1g2bql7ymgfj306j05ejrf.jpg" alt=""><br>例如你在模拟器里跑起一个 iOS 的 App，然后在 App 静止时点击暂停，你会看到主线程调用栈是停留在 <code>mach_msg_trap()</code> 这个地方</p>
+</li>
+</ul>
+<p>关于具体 mach port 发送信息可以查看：NSHipster这篇<a href="http://nshipster.com/inter-process-communication/" target="_blank" rel="noopener">文章</a>，或<a href="http://segmentfault.com/a/1190000002400329" target="_blank" rel="noopener">中文翻译</a> 。</p>
 
       
     </div>
@@ -693,9 +650,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Git/" rel="tag"><i class="fa fa-tag"></i> Git</a>
-          
-            <a href="/tags/总结/" rel="tag"><i class="fa fa-tag"></i> 总结</a>
+            <a href="/tags/RunLoop/" rel="tag"><i class="fa fa-tag"></i> RunLoop</a>
           
         </div>
       
@@ -708,8 +663,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/66907237.html" rel="next" title="iOS-内存管理">
-                <i class="fa fa-chevron-left"></i> iOS-内存管理
+              <a href="/3383943387.html" rel="next" title="输入事件来源">
+                <i class="fa fa-chevron-left"></i> 输入事件来源
               </a>
             
           </div>
@@ -717,6 +672,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/1488828979.html" rel="prev" title="自动释放池">
+                自动释放池 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -906,7 +865,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Git简介"><span class="nav-number">1.</span> <span class="nav-text">Git简介</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#术语解释"><span class="nav-number">1.1.</span> <span class="nav-text">术语解释</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#工作原理"><span class="nav-number">1.2.</span> <span class="nav-text">工作原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三种状态"><span class="nav-number">1.3.</span> <span class="nav-text">三种状态</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#用户信息"><span class="nav-number">1.4.</span> <span class="nav-text">用户信息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#检查配置信息"><span class="nav-number">1.5.</span> <span class="nav-text">检查配置信息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#常用基础命令"><span class="nav-number">1.6.</span> <span class="nav-text">常用基础命令</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#忽略文件"><span class="nav-number">1.6.1.</span> <span class="nav-text">忽略文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#查看已暂存和未暂存的修改"><span class="nav-number">1.6.2.</span> <span class="nav-text">查看已暂存和未暂存的修改</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#跳过使用暂存区域"><span class="nav-number">1.6.3.</span> <span class="nav-text">跳过使用暂存区域</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#移除文件"><span class="nav-number">1.6.4.</span> <span class="nav-text">移除文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#移动文件"><span class="nav-number">1.6.5.</span> <span class="nav-text">移动文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#查看提交历史"><span class="nav-number">1.6.6.</span> <span class="nav-text">查看提交历史</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#撤消操作"><span class="nav-number">1.6.7.</span> <span class="nav-text">撤消操作</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#取消暂存的文件"><span class="nav-number">1.6.8.</span> <span class="nav-text">取消暂存的文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#撤消对文件的修改"><span class="nav-number">1.6.9.</span> <span class="nav-text">撤消对文件的修改</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#隐藏-Stash-操作"><span class="nav-number">1.6.10.</span> <span class="nav-text">隐藏(Stash)操作</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#添加远程仓库"><span class="nav-number">1.6.11.</span> <span class="nav-text">添加远程仓库</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#从远程仓库中抓取与拉取"><span class="nav-number">1.6.12.</span> <span class="nav-text">从远程仓库中抓取与拉取</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#推送到远程仓库"><span class="nav-number">1.6.13.</span> <span class="nav-text">推送到远程仓库</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#查看远程仓库"><span class="nav-number">1.6.14.</span> <span class="nav-text">查看远程仓库</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#远程仓库的移除与重命名"><span class="nav-number">1.6.15.</span> <span class="nav-text">远程仓库的移除与重命名</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#RunLoop内部实现"><span class="nav-number">1.</span> <span class="nav-text">RunLoop内部实现</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#内部逻辑"><span class="nav-number">1.1.</span> <span class="nav-text">内部逻辑</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#底层实现"><span class="nav-number">1.2.</span> <span class="nav-text">底层实现</span></a></li></ol></li></ol></div>
             
 
           </div>

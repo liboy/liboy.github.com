@@ -145,23 +145,25 @@
 
 
 
-  <meta name="description" content="每天进步一点点，坚持带来大改变!">
-<meta property="og:type" content="website">
-<meta property="og:title" content="liberty&#39;s Blog">
-<meta property="og:url" content="http://liboy.site/categories/iOS/index.html">
+  <meta name="description" content="NSTimerNSTimer 其实就是 CFRunLoopTimerRef，他们之间是 toll-free bridged 的。一个 NSTimer 注册到 RunLoop 后，RunLoop 会为其重复的时间点注册好事件。例如 10:00, 10:10, 10:20 这几个时间点。RunLoop为了节省资源，并不会在非常准确的时间点回调这个Timer。Timer 有个属性叫做 Tolerance">
+<meta name="keywords" content="RunLoop,NSTimer">
+<meta property="og:type" content="article">
+<meta property="og:title" content="NSTimer">
+<meta property="og:url" content="http://liboy.site/1852943616.html">
 <meta property="og:site_name" content="liberty&#39;s Blog">
-<meta property="og:description" content="每天进步一点点，坚持带来大改变!">
+<meta property="og:description" content="NSTimerNSTimer 其实就是 CFRunLoopTimerRef，他们之间是 toll-free bridged 的。一个 NSTimer 注册到 RunLoop 后，RunLoop 会为其重复的时间点注册好事件。例如 10:00, 10:10, 10:20 这几个时间点。RunLoop为了节省资源，并不会在非常准确的时间点回调这个Timer。Timer 有个属性叫做 Tolerance">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-04-22T15:03:54.386Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="liberty&#39;s Blog">
-<meta name="twitter:description" content="每天进步一点点，坚持带来大改变!">
+<meta name="twitter:title" content="NSTimer">
+<meta name="twitter:description" content="NSTimerNSTimer 其实就是 CFRunLoopTimerRef，他们之间是 toll-free bridged 的。一个 NSTimer 注册到 RunLoop 后，RunLoop 会为其重复的时间点注册好事件。例如 10:00, 10:10, 10:20 这几个时间点。RunLoop为了节省资源，并不会在非常准确的时间点回调这个Timer。Timer 有个属性叫做 Tolerance">
 
 
 
 
 
 
-  <link rel="canonical" href="http://liboy.site/categories/iOS/"/>
+  <link rel="canonical" href="http://liboy.site/1852943616.html"/>
 
 
 
@@ -171,7 +173,7 @@
   };
 </script>
 
-  <title>分类: iOS | liberty's Blog</title>
+  <title>NSTimer | liberty's Blog</title>
   
 
 
@@ -220,7 +222,7 @@
     
   
 
-  <div class="container sidebar-position-left ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -312,7 +314,7 @@
         
         
           
-          <li class="menu-item menu-item-categories menu-item-active">
+          <li class="menu-item menu-item-categories">
 
     
     
@@ -402,85 +404,269 @@
           
             
 
-    
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-    
-
-  
-
-
           
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block category">
+  <div id="posts" class="posts-expand">
+    
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>iOS<small>分类</small>
-        </h1>
-      </div>
+  
 
-      
-        
+  
+  
+  
+
+  
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://liboy.site/1852943616.html">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="liberty">
+      <meta itemprop="description" content="每天进步一点点，坚持带来大改变!">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="liberty's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/66907237.html" itemprop="url">
-              
-                <span itemprop="name">iOS-内存管理</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">NSTimer
+              
+            
+          </h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-07-23T10:36:00+08:00"
-              content="2018-07-23" >
-          07-23
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
 
-    </header>
-  </article>
+            
+            
+            
 
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2017-11-07 15:00:38" itemprop="dateCreated datePublished" datetime="2017-11-07T15:00:38+08:00">2017-11-07</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-04-22 23:03:54" itemprop="dateModified" datetime="2019-04-22T23:03:54+08:00">2019-04-22</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/RunLoop/" itemprop="url" rel="index"><span itemprop="name">RunLoop</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/1852943616.html#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/1852943616.html" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">本文字数：</span>
+                
+                <span title="本文字数">1.8k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">2 分钟</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="NSTimer"><a href="#NSTimer" class="headerlink" title="NSTimer"></a>NSTimer</h2><p>NSTimer 其实就是 CFRunLoopTimerRef，他们之间是 toll-free bridged 的。一个 NSTimer 注册到 RunLoop 后，RunLoop 会为其重复的时间点注册好事件。例如 10:00, 10:10, 10:20 这几个时间点。RunLoop为了节省资源，并不会在非常准确的时间点回调这个Timer。Timer 有个属性叫做 Tolerance (宽容度)，标示了当时间点到后，容许有多少最大误差。如果某个时间点被错过了，例如执行了一个很长的任务，则那个时间点的回调也会跳过去，不会延后执行。就比如等公交，如果 10:10 时我忙着玩手机错过了那个点的公交，那我只能等 10:20 这一趟了。</p>
+<h3 id="创建"><a href="#创建" class="headerlink" title="创建"></a>创建</h3><figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/// 一种是timerWithXXX，</span></span><br><span class="line">+ (<span class="built_in">NSTimer</span> *)timerWithTimeInterval:(<span class="built_in">NSTimeInterval</span>)ti target:(<span class="keyword">id</span>)aTarget selector:(SEL)aSelector userInfo:(<span class="keyword">nullable</span> <span class="keyword">id</span>)userInfo repeats:(<span class="built_in">BOOL</span>)yesOrNo</span><br><span class="line"></span><br><span class="line"><span class="comment">/// 一种是scheduedTimerWithXXX</span></span><br><span class="line">+ (<span class="built_in">NSTimer</span> *)scheduledTimerWithTimeInterval:(<span class="built_in">NSTimeInterval</span>)ti target:(<span class="keyword">id</span>)aTarget selector:(SEL)aSelector userInfo:(<span class="keyword">nullable</span> <span class="keyword">id</span>)userInfo repeats:(<span class="built_in">BOOL</span>)yesOrNo</span><br><span class="line">``` </span><br><span class="line"></span><br><span class="line"><span class="meta">### 区别：</span></span><br><span class="line">- 后者除了创建一个定时器外会自动以<span class="built_in">NSDefaultRunLoopModeMode</span>添加到当前线程RunLoop中</span><br><span class="line">- 不添加到RunLoop中的<span class="built_in">NSTimer</span>是无法正常工作的。</span><br><span class="line"></span><br><span class="line"><span class="meta">### 注意事项</span></span><br><span class="line"></span><br><span class="line">- 注意timer添加到runloop时应该设置为什么mode</span><br><span class="line">- 注意timer在不需要时，一定要调用invalidate方法释放定时器</span><br><span class="line">- <span class="built_in">NSTimer</span>不是一种实时机制，可能存在误差</span><br><span class="line"></span><br><span class="line"><span class="meta">### UITableView 与 NSTimer 冲突</span></span><br><span class="line">解决方案：</span><br></pre></td></tr></table></figure>
+<ol>
+<li>更改RunLoop运行Mode（NSRunLoopCommonModes）<br>[[NSRunLoop currentRunLoop] addTimer:timer forMode:NSRunLoopCommonModes];</li>
+<li>将NSTimer放到新的线程中<br>NSThread *thread = [[NSThread alloc] initWithTarget:self selector:@selector(newThread) object:nil];<br> [thread start];</li>
+</ol>
+<ul>
+<li>(void)newThread{<br>  @autoreleasepool{<pre><code>//在当前Run Loop中添加timer，模式是默认的NSDefaultRunLoopMode
+timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(incrementCounter:) userInfo: nil repeats:YES];
+//开始执行新线程的Run Loop，如果不启动run loop，timer的事件是不会响应的
+[[NSRunLoop currentRunLoop] run];
+</code></pre>  }<br>}<br><code>`</code></li>
+</ul>
+<blockquote>
+<p>CADisplayLink是一个执行频率（fps）和屏幕刷新相同（可以修改preferredFramesPerSecond改变刷新频率）的定时器，它也需要加入到RunLoop才能执行。与NSTimer类似，CADisplayLink同样是基于CFRunloopTimerRef实现，底层使用mk_timer（可以比较加入到RunLoop前后RunLoop中timer的变化）。和NSTimer相比它精度更高（尽管NSTimer也可以修改精度），不过和NStimer类似的是如果遇到大任务它仍然存在丢帧现象。通常情况下CADisaplayLink用于构建帧动画，看起来相对更加流畅，而NSTimer则有更广泛的用处。</p>
+</blockquote>
 
       
     </div>
 
+    
+
+    
+    
+    
+
+    
+
+    
+       
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/RunLoop/" rel="tag"><i class="fa fa-tag"></i> RunLoop</a>
+          
+            <a href="/tags/NSTimer/" rel="tag"><i class="fa fa-tag"></i> NSTimer</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/3570446412.html" rel="next" title="Runloop">
+                <i class="fa fa-chevron-left"></i> Runloop
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/1243066710.html" rel="prev" title="Hello World">
+                Hello World <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
 
+  </div>
 
 
           </div>
           
+
+  
+    <div class="comments" id="comments">
+    </div>
+
+  
+
+
 
         </div>
         
@@ -501,8 +687,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -623,6 +818,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#NSTimer"><span class="nav-number">1.</span> <span class="nav-text">NSTimer</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#创建"><span class="nav-number">1.1.</span> <span class="nav-text">创建</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -780,6 +991,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.6.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.6.0"></script>
+
+
 
   
 
